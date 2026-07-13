@@ -1,0 +1,152 @@
+log:
+- question: what is DG?
+  corrected: null
+  status: grounded
+  confidence: HIGH
+  bank_hit: true
+  docs_cited:
+  - 00-stitched-architecture-overview
+  - 06-dg-current-state-landscape
+  retrieved: []
+  ts: '2026-07-13T01:50:55'
+- question: what is webde
+  corrected: null
+  status: grounded
+  confidence: LOW
+  bank_hit: true
+  docs_cited:
+  - 11-webde
+  retrieved: []
+  ts: '2026-07-13T01:55:53'
+- question: does webde and DG conencted
+  corrected: does Web DE and DG connected
+  status: grounded
+  confidence: LOW
+  bank_hit: false
+  docs_cited:
+  - 11-webde
+  retrieved:
+  - 11-webde#01
+  - 06-dg-current-state-landscape#01
+  - 00-stitched-architecture-overview#01
+  - 00-stitched-architecture-overview#03
+  - 21-internal-repricing#01
+  - 11-webde#02
+  - 03-cdc-transactional-outbox-reference#01
+  - 01-cdc-options-and-gcp-connectivity#01
+  - register-dg-direct-access
+  - 03-cdc-transactional-outbox-reference#02
+  - 09-datavision-analytics#01
+  - 06-dg-current-state-landscape#03
+  - 06-dg-current-state-landscape#02
+  - 00-stitched-architecture-overview#02
+  - 00-stitched-architecture-overview#04
+  ts: '2026-07-13T01:56:56'
+- question: what are all the componenets DG is connected with ?
+  corrected: what are all the components DG is connected with
+  status: grounded
+  confidence: HIGH
+  bank_hit: false
+  docs_cited:
+  - 00-stitched-architecture-overview
+  - 06-dg-current-state-landscape
+  - 11-webde
+  retrieved:
+  - 21-internal-repricing#01
+  - 11-webde#01
+  - 06-dg-current-state-landscape#01
+  - 00-stitched-architecture-overview#03
+  - 00-stitched-architecture-overview#01
+  - 03-cdc-transactional-outbox-reference#01
+  - 06-dg-current-state-landscape#03
+  - 03-cdc-transactional-outbox-reference#02
+  - 02-north-star-target-architecture#02
+  - 09-datavision-analytics#01
+  - register-dg-direct-access
+  - 01-cdc-options-and-gcp-connectivity#01
+  - 06-dg-current-state-landscape#02
+  - 00-stitched-architecture-overview#02
+  - 00-stitched-architecture-overview#04
+  ts: '2026-07-13T02:01:27'
+- question: What channels does the Meritain RCS welcome campaign use?
+  corrected: null
+  status: not_in_kb
+  confidence: n/a
+  bank_hit: false
+  docs_cited: []
+  retrieved:
+  - 06-dg-current-state-landscape#03
+  - 09-datavision-analytics#01
+  - 05-plan-build-process#01
+  - 18-claims-workflow#02
+  - 00-stitched-architecture-overview#03
+  - gap-003-demo-forced-sme-answer#01
+  - 25-1mage-imaging#01
+  - watchlist-acronyms
+  - 02-north-star-target-architecture#02
+  - 13-ebi-smartcomm#01
+  - gap-001-csi-web-ownership#01
+  - 12-mci-legasuite#01
+  ts: '2026-07-13T08:25:22'
+- question: What is DG?
+  corrected: null
+  status: grounded
+  confidence: HIGH
+  bank_hit: true
+  docs_cited:
+  - 00-stitched-architecture-overview
+  - 06-dg-current-state-landscape
+  retrieved: []
+  ts: '2026-07-13T08:25:57'
+- question: What is WebDE?
+  corrected: null
+  status: grounded
+  confidence: LOW
+  bank_hit: true
+  docs_cited:
+  - 11-webde
+  retrieved: []
+  ts: '2026-07-13T08:25:57'
+- question: How are ID cards printed?
+  corrected: null
+  status: grounded
+  confidence: LOW
+  bank_hit: false
+  docs_cited:
+  - 20-idcard-printing
+  retrieved:
+  - 18-claims-workflow#02
+  - 24-context-diagram#01
+  - 17-eligibility-flows#01
+  - 05-plan-build-process#01
+  - 26-lucidchart-template#01
+  - watchlist-acronyms
+  - 20-idcard-printing#01
+  - gap-004-demo-sme-answer#01
+  - register-nextgen-reuse
+  - 00-stitched-architecture-overview#01
+  - 00-stitched-architecture-overview#02
+  - 14-rightfax#01
+  - 00-stitched-architecture-overview#03
+  - 00-stitched-architecture-overview#04
+  ts: '2026-07-13T08:26:20'
+- question: what is DG
+  corrected: null
+  status: grounded
+  confidence: HIGH
+  bank_hit: true
+  docs_cited:
+  - 00-stitched-architecture-overview
+  - 06-dg-current-state-landscape
+  retrieved: []
+  ts: '2026-07-13T08:52:27'
+- question: what is DG?
+  corrected: null
+  status: grounded
+  confidence: HIGH
+  bank_hit: true
+  docs_cited:
+  - 00-stitched-architecture-overview
+  - 06-dg-current-state-landscape
+  retrieved: []
+  ts: '2026-07-13T08:54:08'

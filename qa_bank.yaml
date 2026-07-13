@@ -1,0 +1,1314 @@
+qa_bank:
+- id: QB001
+  domain: DG Core
+  question: What is DG and what technology is it built on?
+  answerable: Y
+  answer: 'DG (Data General) is Meritain''s TPA administration backbone: a Rocket UniVerse MultiValue database with application
+    code in Pick/UniBASIC. It is both system of record and application platform.'
+  citations:
+  - '06'
+  - '00'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB002
+  domain: DG Core
+  question: What hardware does production DG run on?
+  answerable: Y
+  answer: A single AIX P9-PI80 with 54 CPUs, 44 dedicated to prod; non-prod shares the same box with 3 CPUs (move planned).
+  citations:
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB003
+  domain: DG Core
+  question: Where is DG hosted and what is the DR setup?
+  answerable: Y
+  answer: Primary DC is Phoenix AZ (Las Vegas migration planned). DR is in a Nevada data center on a smaller AIX P9-PI50.
+  citations:
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB004
+  domain: DG Core
+  question: Is DR capacity sufficient to run full production load?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: DG SMEs / Infrastructure
+  priority: High
+  kb_version: seed-v1
+- id: QB005
+  domain: DG Core
+  question: How many members does Meritain serve on DG?
+  answerable: Y
+  answer: ~2M members today; Advocate Health expected to add ~250K; future potential 4M.
+  citations:
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB006
+  domain: DG Core
+  question: What are DG's core internal processes?
+  answerable: Y
+  answer: Claim adjudication, enrollment processing, eligibility processing, ID card printing, and Draft Processing (end-of-day
+    payment run), plus DG Loader/Extracter and the WebDE service layer.
+  citations:
+  - '06'
+  - '00'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB007
+  domain: DG Core
+  question: How long does the nightly Draft process take?
+  answerable: Y
+  answer: Runs 5 days/week starting midnight, taking 11-17 hours.
+  citations:
+  - '06'
+  - '23'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB008
+  domain: DG Core
+  question: What happens if the Draft process fails mid-run?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: DG SMEs (Ops)
+  priority: High
+  kb_version: seed-v1
+- id: QB009
+  domain: DG Core
+  question: How many claim processing queues exist?
+  answerable: Y
+  answer: 7 queues, managed via the Benton job scheduler.
+  citations:
+  - '06'
+  - '22'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB010
+  domain: DG Core
+  question: Are claim queues standardized with other Benton queues?
+  answerable: P
+  answer: No - claim queues do not follow the standard queue setup; a standardization design doc exists but implementation
+    status is unknown.
+  citations:
+  - '22'
+  decision_status: null
+  suggested_sme: DG SMEs (Ops)
+  priority: Med
+  kb_version: seed-v1
+- id: QB011
+  domain: DG Core
+  question: What are DG's real-time transaction volumes?
+  answerable: Y
+  answer: 2 million eligibility requests (270/271) per day and 10K claim status calls (276/277) per day, at a 20-second response
+    SLA; 50% from Aetna, 50% from ChangeHealthCare.
+  citations:
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB012
+  domain: DG Core
+  question: What is DG's licensing model and how many Universe licenses exist?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: DG SMEs / Vendor mgmt (Rocket)
+  priority: Med
+  kb_version: seed-v1
+- id: QB013
+  domain: DG Core
+  question: What is DG's backup and retention policy?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: DG SMEs / Infrastructure
+  priority: High
+  kb_version: seed-v1
+- id: QB014
+  domain: DG Core
+  question: What monitoring and alerting exists for DG?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: DG SMEs (Ops)
+  priority: High
+  kb_version: seed-v1
+- id: QB015
+  domain: DG Core
+  question: What files does DG use to track claims internally?
+  answerable: Y
+  answer: HSTRACKING (where/when a claim was routed and returned) and BHIST (claim detail shown on DG screens).
+  citations:
+  - '18'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB016
+  domain: DG Core
+  question: What is the Benton scheduler and what does it do?
+  answerable: Y
+  answer: Benton is DG's background job scheduler covering general background, claims, PPO and special processing; new queues
+    must be registered in Benton and several DG places for tracking/balancing.
+  citations:
+  - '22'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB017
+  domain: DG Core
+  question: What is the DRAFTS security model?
+  answerable: P
+  answer: DRAFTS must be scheduled by someone with permissions in security list DRAFTS; broader DG security model is undocumented.
+  citations:
+  - '23'
+  decision_status: null
+  suggested_sme: DG SMEs
+  priority: Med
+  kb_version: seed-v1
+- id: QB018
+  domain: WebDE
+  question: What is WebDE?
+  answerable: Y
+  answer: The real-time service layer running ON the DG box, written in Universe (Rocket COTS, RedBack stack). It exposes
+    Universe files as objects and serves APIC, EDI27X, CSI Web, IVR, QuickClicks and Claim System Connect.
+  citations:
+  - '11'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB019
+  domain: WebDE
+  question: What components make up WebDE?
+  answerable: Y
+  answer: RedBack Object Server, Java Scheduler (connection manager/load balancing via U2 webshares), Admin API server, RedBeans
+    (Java) and RedPages.NET APIs, and Web Designer tooling.
+  citations:
+  - '11'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB020
+  domain: WebDE
+  question: What replaces WebDE and when?
+  answerable: P
+  answer: MVIS (MultiValueIS by Rocket) is the selected replacement direction; timeline and consumer migration order are open.
+  citations:
+  - '11'
+  - register
+  decision_status: SELECTED (direction) / OPEN (timeline)
+  suggested_sme: Bob's team
+  priority: High
+  kb_version: seed-v1
+- id: QB021
+  domain: WebDE
+  question: What load does WebDE carry and can it scale for 4M members?
+  answerable: P
+  answer: It carries the 2M/day eligibility and 10K/day claim-status real-time traffic today; scalability headroom for 4M
+    members is undocumented.
+  citations:
+  - '06'
+  decision_status: null
+  suggested_sme: DG SMEs / Capacity planning
+  priority: High
+  kb_version: seed-v1
+- id: QB022
+  domain: Claims
+  question: How do claims enter DG?
+  answerable: Y
+  answer: Via clearinghouses (837 EDI), paper/fax through Exela and BankTec (converted to 837 + OCR image), Aetna Redirect
+    API, Medicare crossover (COBA), MSAS shared-admin claims, and PBM feeds.
+  citations:
+  - '18'
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB023
+  domain: Claims
+  question: What pre-adjudication editing occurs?
+  answerable: Y
+  answer: ClaimsXten (ChangeHealthcare, fka Intelliclaim) performs claim edits at high volume; network pricing runs internal/near-line/wholesale
+    paths.
+  citations:
+  - '18'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB024
+  domain: Claims
+  question: What happens during adjudication?
+  answerable: Y
+  answer: Internal routing includes CERis, PBS/FCR/OON negotiation pricing, TRIBAL pricing, prepayment audit for high-dollar
+    claims, SimplePay member share, HCBB vendor API, facility-plan discounts, and IDX price-and-pay.
+  citations:
+  - '18'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB025
+  domain: Claims
+  question: What are the outputs after adjudication?
+  answerable: Y
+  answer: Drafts generates check registers to AccPac; payments via ECHO; EOB/check print via Zelis; provider EPPs; PHIA subrogation
+    extracts; PBM accumulator extracts; FSA vendor feeds; state surcharge; standard reporting package; EDW/DataVision.
+  citations:
+  - '18'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB026
+  domain: Claims
+  question: What percentage of claims require manual adjudication and why?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: DG SMEs / Claims Ops (drives the P6 agentic claims case)
+  priority: High
+  kb_version: seed-v1
+- id: QB027
+  domain: Claims
+  question: What are the 837 acknowledgment SLAs?
+  answerable: Y
+  answer: 999 ACK returned daily for ChangeHealthCare feeds and hourly for Availity.
+  citations:
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: Low
+  kb_version: seed-v1
+- id: QB028
+  domain: Claims
+  question: What is the paper claim SLA and the plan to improve it?
+  answerable: P
+  answer: BankTec conversion is multi-day today; a stated future plan is to bypass the BankTec layer to reach a 24-hour SLA.
+    Status open.
+  citations:
+  - '06'
+  - register
+  decision_status: OPEN
+  suggested_sme: Bob's team
+  priority: Med
+  kb_version: seed-v1
+- id: QB029
+  domain: Claims
+  question: How are claim adjustments requested?
+  answerable: Y
+  answer: Adjustment requests come from CSR, CSI and Client Advocates (internal routing post-adjudication).
+  citations:
+  - '18'
+  decision_status: null
+  suggested_sme: null
+  priority: Low
+  kb_version: seed-v1
+- id: QB030
+  domain: Claims
+  question: What is Exela's role?
+  answerable: Y
+  answer: Exela converts paper claims and faxes into 837 transactions inbound to DG.
+  citations:
+  - '18'
+  decision_status: null
+  suggested_sme: null
+  priority: Low
+  kb_version: seed-v1
+- id: QB031
+  domain: Repricing
+  question: What is BAMR and how much volume does it handle?
+  answerable: Y
+  answer: BAMR (Business Alliances Manual Repricer) prices claims against the Repricer Book of Record before downstream processing;
+    80-90% of DG transactions are repriced there via a real-time call from DG through Meritain APIC.
+  citations:
+  - '10'
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB032
+  domain: Repricing
+  question: What infrastructure does BAMR run on?
+  answerable: Y
+  answer: Azure OpenShift (OCP4) pods in US-East-2 fronted by an Azure load balancer, integrating with Aetna mainframe CICS
+    (region PSODCICG) and DB2 (BAMR DB DWCI1P0AD, EPDB DSP400P0D) via MQ and DataPower web services.
+  citations:
+  - '10'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB033
+  domain: Repricing
+  question: What repricing happens inside DG itself?
+  answerable: Y
+  answer: A UniBASIC local service (applyRePricingRules) does contract rate lookup, fee schedule mapping, bundling rules and
+    modifier adjustments - the minority path vs BAMR.
+  citations:
+  - '21'
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB034
+  domain: Repricing
+  question: How long do other third-party repricers take?
+  answerable: Y
+  answer: 3-4 days, versus BAMR's real-time response.
+  citations:
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: Low
+  kb_version: seed-v1
+- id: QB035
+  domain: Repricing
+  question: What is the BAMR failure mode - what happens to claims if BAMR is down?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: Aetna BAMR team / DG SMEs
+  priority: High
+  kb_version: seed-v1
+- id: QB036
+  domain: Repricing
+  question: Is MCPS still in use?
+  answerable: Y
+  answer: MCPS (CVTY/Wholesale) is marked as a sunset application.
+  citations:
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: Low
+  kb_version: seed-v1
+- id: QB037
+  domain: Eligibility
+  question: How does enrollment data enter DG?
+  answerable: Y
+  answer: Employers send 834/custom batch files (weekly/monthly) via SFTP to Axway; 834s route through BizTalk for validation/translation;
+    DG runs Eligibility Load (pre-process, mapping, post-process); manual UI entry and the MeritainConnect plan sponsor portal
+    handle small changes.
+  citations:
+  - '16'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB038
+  domain: Eligibility
+  question: Who is the source of truth for eligibility?
+  answerable: Y
+  answer: The employer/plan sponsor - the TPA administers what the employer authorizes. Eligibility reflects the last file
+    received; retroactive changes can void prior active status at claim time.
+  citations:
+  - '16'
+  - '17'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB039
+  domain: Eligibility
+  question: What systems consume eligibility data from DG?
+  answerable: Y
+  answer: Repricing vendors, ID card vendors (Zelis), Wex, Payflex, COBRA administrators, CMS (Section 111, COBA), state regulators,
+    PBMs and carve-out vendors.
+  citations:
+  - '17'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB040
+  domain: Eligibility
+  question: What eligibility channels do providers use?
+  answerable: Y
+  answer: EDI 270/271 (with TPA-limited benefit detail), Meritain and Aetna provider portals (network-level visibility), and
+    phone/manual verification for edge cases.
+  citations:
+  - '17'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB041
+  domain: Eligibility
+  question: What is Aetna Redirect?
+  answerable: Y
+  answer: Eligibility and claim-status inquiries sent to Aetna get redirected to Meritain via API (270/276 in, 271/277 out);
+    a tool tracks which customers moved from Aetna to Meritain.
+  citations:
+  - '17'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB042
+  domain: Eligibility
+  question: What are the four eligibility intake channels into DG?
+  answerable: Y
+  answer: Flat file, standard feeds, 834/812 transactions, and manual UI entry.
+  citations:
+  - '05'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB043
+  domain: Eligibility
+  question: What is the error/rejection rate on inbound 834 files?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: Bob's team / Enrollment Ops
+  priority: Med
+  kb_version: seed-v1
+- id: QB044
+  domain: Eligibility
+  question: What is Wex and how does it connect?
+  answerable: Y
+  answer: Wex is a COTS SaaS administering flexible pre-tax benefits (e.g. HSA/FSA); 2-way integration with DG (batch plus
+    a mini-service to establish a common key).
+  citations:
+  - '17'
+  decision_status: null
+  suggested_sme: null
+  priority: Low
+  kb_version: seed-v1
+- id: QB045
+  domain: Plan Build
+  question: How does plan build work today?
+  answerable: Y
+  answer: Client benefit requirements (often inconsistent, no structured rules repository) are manually translated by SMEs
+    into DG green-screen configuration across 60-80 applications/views; rules are hard-coded, tested only by running manual
+    test claims; UAT depends on a small expert group.
+  citations:
+  - '05'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB046
+  domain: Plan Build
+  question: Why is plan build considered high risk?
+  answerable: Y
+  answer: No discrete rule objects, no automated regression environment, rules cannot be inspected directly (claim outcomes
+    are the proxy), heavy dependence on tribal knowledge and muscle-memory navigation.
+  citations:
+  - '05'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB047
+  domain: Plan Build
+  question: How many letter templates exist and how many are migrated?
+  answerable: Y
+  answer: ~150 member letters (only 20-30 migrated to SmartComm) and ~250 claims letters (none migrated).
+  citations:
+  - '05'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB048
+  domain: Plan Build
+  question: Who are the named business resources for plan build knowledge?
+  answerable: Y
+  answer: Lynn Fletcher and Terrie Nicks (named in the source email as best resources).
+  citations:
+  - '05'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB049
+  domain: Plan Build
+  question: Is a welcome email sent to new members today?
+  answerable: N
+  answer: null
+  citations:
+  - (flagged 'unclear' on source slide)
+  decision_status: null
+  suggested_sme: Lynn Fletcher / Terrie Nicks
+  priority: Low
+  kb_version: seed-v1
+- id: QB050
+  domain: Plan Build
+  question: How long does a typical plan build take end-to-end?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: Lynn Fletcher / Terrie Nicks
+  priority: High
+  kb_version: seed-v1
+- id: QB051
+  domain: Plan Build
+  question: Could plan rules be extracted from DG programmatically?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: DG SMEs (this determines feasibility of a rules repository)
+  priority: High
+  kb_version: seed-v1
+- id: QB052
+  domain: Integration
+  question: What integration middleware exists?
+  answerable: Y
+  answer: 'Axway (managed file transfer), BizTalk (x12: 837/834/277CA + real-time 270/271-276/277, frozen since 2020), Sterling
+    ITX/ITXA (all new translation incl. 275s/278s and SmartComm), and MALF (internal .Net+XSLT framework, legacy extracts).'
+  citations:
+  - '16'
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB053
+  domain: Integration
+  question: Why is BizTalk frozen?
+  answerable: Y
+  answer: A 2020 decision (attributed to Bob) directs all new translation and file processing to Sterling ITX/ITXA; only targeted
+    BizTalk performance enhancements are allowed.
+  citations:
+  - '16'
+  decision_status: SELECTED
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB054
+  domain: Integration
+  question: What still runs on MALF and what is its retirement plan?
+  answerable: P
+  answer: MALF still runs a fair number of extract and inbound file processes; no new development. A full inventory and retirement
+    plan are undocumented.
+  citations:
+  - '16'
+  decision_status: null
+  suggested_sme: Bob's team
+  priority: Med
+  kb_version: seed-v1
+- id: QB055
+  domain: Integration
+  question: How do stop-loss filings flow?
+  answerable: Y
+  answer: DG produces specific (automated + manual) and aggregate (manual) filings; the Stop Loss extractor sends them via
+    Axway to carrier or Meritain SFTP; reimbursements return via ACH/check; AdminPC2 is the PGP encrypt/decrypt landing zone.
+  citations:
+  - '15'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB056
+  domain: Integration
+  question: What is RightFax used for?
+  answerable: Y
+  answer: Inbound plan-sponsor enrollment faxes (converted to doc, emailed to a business group, then MANUALLY keyed into DG)
+    and outbound DG EOB faxes to providers.
+  citations:
+  - '14'
+  decision_status: null
+  suggested_sme: null
+  priority: Low
+  kb_version: seed-v1
+- id: QB057
+  domain: Integration
+  question: Which vendors receive files via Axway?
+  answerable: Y
+  answer: Stop-loss carriers, Zelis (ID cards, EOB/check print), and general external partner SFTP traffic; Axway is the file
+    gateway in the enrollment flow as well.
+  citations:
+  - '15'
+  - '20'
+  - '16'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB058
+  domain: Integration
+  question: What is the complete Axway endpoint inventory?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: Bob's team
+  priority: Med
+  kb_version: seed-v1
+- id: QB059
+  domain: CDC/Data
+  question: Which CDC approach has been selected for DG?
+  answerable: P
+  answer: OPEN decision. Page 1 rates RDRS (Rocket Data Replicate & Sync) as best; pages 3/7 recommend the application-level
+    Transactional Outbox. The docs note U2 replication (HA/DR) and Outbox (integration) are complementary, but the production
+    pattern is unconfirmed - SME Q1.
+  citations:
+  - '01'
+  - '03'
+  - register
+  decision_status: OPEN
+  suggested_sme: Rakesh / Ali / data strategy team
+  priority: High
+  kb_version: seed-v1
+- id: QB060
+  domain: CDC/Data
+  question: Why can't standard log-based CDC be used on DG?
+  answerable: Y
+  answer: MVDB exposes no usable redo/WAL logs, so CDC must be application-level - changes are captured in UniBASIC and persisted
+    to a Transactional Outbox that serves as the authoritative change log.
+  citations:
+  - '03'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB061
+  domain: CDC/Data
+  question: What are the five non-negotiable CDC principles?
+  answerable: Y
+  answer: 1) CDC must be application-level; 2) Kafka is the system of record for change events, not MongoDB; 3) events are
+    immutable/replayable; 4) MongoDB is a projection, not source of truth; 5) idempotency is mandatory.
+  citations:
+  - '03'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB062
+  domain: CDC/Data
+  question: How does the Transactional Outbox work?
+  answerable: Y
+  answer: UniBASIC WRITE/DELETE wrappers (or file triggers) call a CDC handler that writes one OUTBOX record atomically in
+    the same MV transaction; a background publisher polls STATUS=NEW, publishes to per-entity Kafka topics, marks SENT; consumers
+    upsert idempotently into MongoDB; full rebuild via offset replay.
+  citations:
+  - '03'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB063
+  domain: CDC/Data
+  question: Which entity should be first for CDC?
+  answerable: P
+  answer: The doc suggests CUSTOMERS or ACCOUNTS (high-read, low-write); the actual selection is unconfirmed.
+  citations:
+  - '03'
+  decision_status: OPEN
+  suggested_sme: Rakesh / Ali
+  priority: Med
+  kb_version: seed-v1
+- id: QB064
+  domain: CDC/Data
+  question: Avro or JSON for CDC events?
+  answerable: Y
+  answer: Avro is best practice once multiple consumers exist (schema enforcement, backward compatibility, size); JSON acceptable
+    for pilots.
+  citations:
+  - '03'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB065
+  domain: CDC/Data
+  question: Confluent Cloud or GCP Managed Kafka?
+  answerable: P
+  answer: OPEN - both listed as options; diagrams label 'Confluent Kafka (GCP)' suggesting Confluent, but no decision is stated.
+  citations:
+  - '01'
+  - register
+  decision_status: OPEN
+  suggested_sme: Rakesh / Ali / data strategy team
+  priority: Med
+  kb_version: seed-v1
+- id: QB066
+  domain: CDC/Data
+  question: How will on-prem connect to GCP?
+  answerable: P
+  answer: OPEN - VPN (bandwidth-limited), PSC (private endpoint) and Interconnect (10-100 Gbps) are the evaluated options;
+    PSC endpoints are drawn in the target diagram.
+  citations:
+  - '01'
+  - register
+  decision_status: OPEN
+  suggested_sme: Network / data strategy team
+  priority: Med
+  kb_version: seed-v1
+- id: QB067
+  domain: CDC/Data
+  question: What is the Meritain Transactional Cache?
+  answerable: Y
+  answer: A MongoDB Atlas (GCP) consumer-optimized read cache fed from DG via CDC->Kafka->Kafka Connect->MongoDB Sink, with
+    a data denormalization step; modeled on the Aetna Commercial Member/Plan/Product transaction cache pattern (GKE + Apigee
+    + Pub/Sub).
+  citations:
+  - '01'
+  - '07'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB068
+  domain: CDC/Data
+  question: What is the expected data freshness/latency SLA for the cache?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: Rakesh / Ali / data strategy team
+  priority: High
+  kb_version: seed-v1
+- id: QB069
+  domain: CDC/Data
+  question: Who owns event schemas and schema evolution governance?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: Data strategy team (unidentified - dependency)
+  priority: High
+  kb_version: seed-v1
+- id: QB070
+  domain: CDC/Data
+  question: What is the replay/retention requirement for Kafka topics?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: Rakesh / Ali
+  priority: Med
+  kb_version: seed-v1
+- id: QB071
+  domain: CDC/Data
+  question: Is the page-4 claims data model the approved cache schema?
+  answerable: P
+  answer: OPEN - entities and FKs are documented (MEMBER, CLAIM, SERVICE_LINE, GROUP_INFO, PROVIDER, CLAIM_TRACKING, CLAIM_DOCUMENT)
+    but approval status, cardinality and composite keys are unconfirmed (SME Q25-29).
+  citations:
+  - '04'
+  - register
+  decision_status: OPEN
+  suggested_sme: Rakesh / Ali
+  priority: Med
+  kb_version: seed-v1
+- id: QB072
+  domain: Strategy
+  question: What is the North Star principle for DG access?
+  answerable: Y
+  answer: 'Verbatim: ''No one will interact with DG directly. All DG interaction will be done through data platform.'''
+  citations:
+  - '02'
+  decision_status: SELECTED
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB073
+  domain: Strategy
+  question: What are the modernization priorities?
+  answerable: Y
+  answer: P1 CDC from DG; P2 refactor DG into domain-driven architecture; P3 AI contact center JV + evaluate Zelis for member
+    services; P6 agentic enrollment-verification and claims-decision copilots; P7 predictive analytics; P8 AI-powered production
+    support; P9 real-time internal integrations.
+  citations:
+  - '02'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB074
+  domain: Strategy
+  question: What domains are targeted for DG decomposition?
+  answerable: Y
+  answer: Provider/Rates/Network, Claims, Member, Plan Sponsor, Benefit Admin setup, Case setup, Draft Payment.
+  citations:
+  - '02'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB075
+  domain: Strategy
+  question: What are the agentic platforms (P6)?
+  answerable: Y
+  answer: Agentic Enrollment Verification (validates enrollment against client rules) and Agentic Claims Decision (attacks
+    manual adjudication) - both LLM+RAG copilots with agent orchestration, RAG knowledge layer, audit/evidence store and an
+    explanation LLM layer.
+  citations:
+  - '02'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB076
+  domain: Strategy
+  question: What is Priority 5?
+  answerable: N
+  answer: null
+  citations:
+  - (unlabeled in the source diagram)
+  decision_status: null
+  suggested_sme: Muhammad / strategy
+  priority: Low
+  kb_version: seed-v1
+- id: QB077
+  domain: Strategy
+  question: Is NextGen reuse confirmed for enrollment/correspondence/ID cards?
+  answerable: P
+  answer: OPEN - diagram note says 'to be confirmed with NextGen'.
+  citations:
+  - '02'
+  - register
+  decision_status: OPEN
+  suggested_sme: Muhammad / NextGen
+  priority: Med
+  kb_version: seed-v1
+- id: QB078
+  domain: Strategy
+  question: What is the Superapp decision?
+  answerable: P
+  answer: OPEN - posed as a question in the diagram ('Can we use Superapp for Meritain?').
+  citations:
+  - '02'
+  - register
+  decision_status: OPEN
+  suggested_sme: Muhammad / strategy
+  priority: Low
+  kb_version: seed-v1
+- id: QB079
+  domain: Strategy
+  question: What is the Zelis member-services evaluation status?
+  answerable: P
+  answer: OPEN - P3 states 'Evaluate Zelis for Member services'; no outcome documented.
+  citations:
+  - '02'
+  - register
+  decision_status: OPEN
+  suggested_sme: Muhammad / strategy
+  priority: Med
+  kb_version: seed-v1
+- id: QB080
+  domain: Strategy
+  question: What is the business case / funding model for the modernization program?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: Muhammad / Tony Albi
+  priority: High
+  kb_version: seed-v1
+- id: QB081
+  domain: Strategy
+  question: What is the target sequencing between CDC (P1) and DG refactor (P2)?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: Muhammad / Rakesh
+  priority: High
+  kb_version: seed-v1
+- id: QB082
+  domain: Contact Center
+  question: How do calls flow today?
+  answerable: Y
+  answer: Employer/member/provider calls hit the AVAYA gateway (being replaced by Five9 per corporate directive), route to
+    agents in the Aetna domain; the Edify IVR collects member ID, handles after-hours and talks to DG; agents use CSI Web
+    which reaches DG via WebDE.
+  citations:
+  - '19'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB083
+  domain: Contact Center
+  question: What replaces Avaya and what is the status?
+  answerable: Y
+  answer: Five9 - a corporate directive upgrade (SELECTED); migration date undocumented.
+  citations:
+  - '19'
+  - '06'
+  - register
+  decision_status: SELECTED
+  suggested_sme: Sunil / Ramesh
+  priority: Med
+  kb_version: seed-v1
+- id: QB084
+  domain: Contact Center
+  question: What happens to the Edify IVR under Five9?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: Sunil / Ramesh
+  priority: Med
+  kb_version: seed-v1
+- id: QB085
+  domain: Contact Center
+  question: What AI capabilities are planned for the contact center?
+  answerable: Y
+  answer: Voice/digital/process intelligent agents, agent productivity via GenAI (assist/coaching, knowledge assist, interaction
+    summaries/transcription), Salesforce Service Cloud + Health Cloud as the enterprise service platform, omnichannel engagement
+    and decision engines.
+  citations:
+  - '02'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB086
+  domain: Vendors
+  question: What does Zelis do for Meritain?
+  answerable: Y
+  answer: Prints/mails EOBs and checks, produces ID cards (daily fixed-length eligibility extract via Axway), serves EOB images
+    through an API to the member portal, and handles paper check information.
+  citations:
+  - '18'
+  - '20'
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB087
+  domain: Vendors
+  question: What does ECHO do?
+  answerable: Y
+  answer: Receives the payment file (SFTP) from claims completion - third-party payer for electronic payments.
+  citations:
+  - '18'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB088
+  domain: Vendors
+  question: What is 1mage?
+  answerable: Y
+  answer: 'The document imaging system (digit one + ''mage'', not ''Image''): Linux-hosted with APIs, connected to DG via
+    1mage Connect; stores/retrieves claim document images; receives archive data from EBI/GCP buckets; accessed via SwiftView/WinClient
+    over Citrix and the VIA web tool.'
+  citations:
+  - '25'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB089
+  domain: Vendors
+  question: What does US Bank handle?
+  answerable: Y
+  answer: COBRA and retiree plan cost share - premium payment by credit card; US Bank stores member credit card data (PCI
+    scope stays with US Bank).
+  citations:
+  - '06'
+  - '24'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB090
+  domain: Vendors
+  question: What is HealthSparq?
+  answerable: Y
+  answer: The cost estimator tool, fed by a batch feed of supporting data from DG; SSO access.
+  citations:
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: Low
+  kb_version: seed-v1
+- id: QB091
+  domain: Vendors
+  question: What is PHIA's role?
+  answerable: Y
+  answer: Subrogation vendor - receives claims extracts (candidates for other insurance) via SFTP; an auto-adjustment file
+    returns (API in progress).
+  citations:
+  - '18'
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: Low
+  kb_version: seed-v1
+- id: QB092
+  domain: Vendors
+  question: What is SmartComm and where does it run?
+  answerable: Y
+  answer: Correspondence platform (SmartCOMM SaaS on AWS, multi-tenant) solutioned on Sterling; connectivity via private MPLS
+    through an Azure Secure Hub; future SMS gateway/mail server noted as 'SmartPath'.
+  citations:
+  - '13'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB093
+  domain: Vendors
+  question: What is SmartPath exactly?
+  answerable: N
+  answer: null
+  citations:
+  - ('Future is SmartPath' noted without definition)
+  decision_status: null
+  suggested_sme: Bob's team / correspondence owner
+  priority: Low
+  kb_version: seed-v1
+- id: QB094
+  domain: Vendors
+  question: What is DocStore?
+  answerable: Y
+  answer: Internally developed document management for DG static reports (monthly plan-sponsor reports, 'Digital WIKI'), custom
+    MeritainConnect content, and external static links for BPO plan documents.
+  citations:
+  - 08
+  decision_status: null
+  suggested_sme: null
+  priority: Low
+  kb_version: seed-v1
+- id: QB095
+  domain: Vendors
+  question: What are MCMM, MWHCSS, CSC, IMI, WorkIT and DMWiz?
+  answerable: N
+  answer: null
+  citations:
+  - (appear in diagrams; roles undocumented - acronym watchlist)
+  decision_status: null
+  suggested_sme: DG SMEs / Meritain Ops (SME Q9)
+  priority: Med
+  kb_version: seed-v1
+- id: QB096
+  domain: Analytics
+  question: What is DataVision?
+  answerable: Y
+  answer: 'DataVision (a.k.a DataHub ODS) is the analytics/reporting hub: IBM DB2 fed from DG, ETL via Tidal + Python + DataStage,
+    serving DV Datamarts consumed in Tableau.'
+  citations:
+  - 09
+  - '06'
+  decision_status: null
+  suggested_sme: null
+  priority: High
+  kb_version: seed-v1
+- id: QB097
+  domain: Analytics
+  question: What is the future of the EDW and Legacy ODS?
+  answerable: Y
+  answer: EDW is 'subject to retire' (extract logic moving to DataHub ODS); the Legacy ODS (SQL Server) 'will also go away
+    after EDW'; a note adds 'Enterprise may not want to keep with DB2'.
+  citations:
+  - 09
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB098
+  domain: Analytics
+  question: What is EBI?
+  answerable: Y
+  answer: Enterprise Business Integration - an agile team providing configurable data-exchange solutions ('any data, anywhere,
+    anytime'); pulls from the analytics layer to GCP Meritain buckets feeding Zelis print/mail and 1mage archive.
+  citations:
+  - '13'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB099
+  domain: Analytics
+  question: What is the EDW retirement timeline?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: Tracy Fleckenstein / DataVision team
+  priority: Med
+  kb_version: seed-v1
+- id: QB100
+  domain: Analytics
+  question: What reporting do plan sponsors get?
+  answerable: Y
+  answer: Standard Reporting Package (SRP) via the client portal on MeritainConnect; static monthly reports via DocStore;
+    stop-loss reporting (members reaching limits, expenses vs aggregate).
+  citations:
+  - '15'
+  - 08
+  decision_status: null
+  suggested_sme: null
+  priority: Low
+  kb_version: seed-v1
+- id: QB101
+  domain: Risk/Security
+  question: What single points of failure exist around DG?
+  answerable: P
+  answer: 'Documented: one AIX box carries prod + non-prod + WebDE service layer + internal repricing; DR is smaller (P9-PI50)
+    and unproven for full load in the docs. Formal SPOF/HA analysis is not in the KB.'
+  citations:
+  - '06'
+  - '00'
+  decision_status: null
+  suggested_sme: DG SMEs / Infrastructure
+  priority: High
+  kb_version: seed-v1
+- id: QB102
+  domain: Risk/Security
+  question: Where does member credit card data live?
+  answerable: Y
+  answer: With US Bank (they store member credit card data for COBRA premium payments) - keeping direct PCI storage out of
+    DG per the diagrams.
+  citations:
+  - '06'
+  - '24'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB103
+  domain: Risk/Security
+  question: Where is SSN masking applied?
+  answerable: Y
+  answer: In the BAMR audit component (SSN masking noted on the BAMR infrastructure diagram).
+  citations:
+  - '10'
+  decision_status: null
+  suggested_sme: null
+  priority: Low
+  kb_version: seed-v1
+- id: QB104
+  domain: Risk/Security
+  question: What is DG's authentication/authorization model?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: DG SMEs / Security
+  priority: High
+  kb_version: seed-v1
+- id: QB105
+  domain: Risk/Security
+  question: What PHI controls govern data flowing to GCP/MongoDB in the target state?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: Data strategy / Security / Governance
+  priority: High
+  kb_version: seed-v1
+- id: QB106
+  domain: Risk/Security
+  question: What is the RTO/RPO for DG?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: DG SMEs / Infrastructure
+  priority: High
+  kb_version: seed-v1
+- id: QB107
+  domain: Risk/Security
+  question: Is there a documented incident/runbook library for DG outages?
+  answerable: N
+  answer: null
+  citations:
+  - (P8 proposes AI runbook automation
+  - implying gaps today)
+  decision_status: null
+  suggested_sme: DG SMEs (Ops)
+  priority: Med
+  kb_version: seed-v1
+- id: QB108
+  domain: ID Cards
+  question: How are ID cards produced today?
+  answerable: Y
+  answer: DG eligibility runs a daily extract (extractIntoFile) -> ID Card Printing Service creates a fixed-length text file
+    -> SFTP to Axway -> SFTP to Zelis for print/mail.
+  citations:
+  - '20'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB109
+  domain: ID Cards
+  question: What are the target-state options for ID cards?
+  answerable: P
+  answer: MICS (the Aetna Member ID Card System, event-driven on GKE) and NextGen reuse are both referenced; neither confirmed
+    for Meritain.
+  citations:
+  - '07'
+  - '02'
+  decision_status: OPEN
+  suggested_sme: Muhammad / NextGen
+  priority: Med
+  kb_version: seed-v1
+- id: QB110
+  domain: ID Cards
+  question: Where do members access ID cards digitally?
+  answerable: Y
+  answer: Via Meritain APIC 'ID cards via WebDE' serving ID card access to portals/members.
+  citations:
+  - '06'
+  - '11'
+  decision_status: null
+  suggested_sme: null
+  priority: Low
+  kb_version: seed-v1
+- id: QB111
+  domain: Aetna Pattern
+  question: What is the Commercial Transaction Cache?
+  answerable: Y
+  answer: 'The Aetna-side pattern: MEA/ODS (member, DB2) and PSBoR/PBoR (plan/product, DB2) feed GKE-hosted Mongo caches via
+    daily refresh + Kafka incremental updates, exposed through Apigee X APIs with Lucene search; Pub/Sub publishes member/plan
+    events consumed by AEP, Vendor Eligibility and MICS.'
+  citations:
+  - '07'
+  decision_status: null
+  suggested_sme: null
+  priority: Med
+  kb_version: seed-v1
+- id: QB112
+  domain: Aetna Pattern
+  question: Will Meritain literally reuse the Aetna cache components or just the pattern?
+  answerable: N
+  answer: null
+  citations: []
+  decision_status: null
+  suggested_sme: Rakesh / Ali / enterprise architecture
+  priority: Med
+  kb_version: seed-v1

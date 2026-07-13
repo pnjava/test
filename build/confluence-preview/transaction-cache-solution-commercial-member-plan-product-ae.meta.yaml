@@ -1,0 +1,16 @@
+title: Transaction Cache Solution — Commercial Member/Plan/Product (Aetna side)
+group: Current State
+labels:
+- state-current-in-flight-aetna-commercial-side-
+- confidence-verified-diagram
+- tag-transactional-cache
+- tag-mongodb
+- tag-kafka
+- tag-gke
+- tag-apigee
+- tag-member
+- tag-plan
+- tag-product
+attachments:
+- /Users/narendrakumar/eaip/kb/assets/page-08.png
+- /Users/narendrakumar/eaip/kb/assets/page-09.png

@@ -1,0 +1,40 @@
+<ac:structured-macro ac:name="info"><ac:rich-text-body><p>state: governance · confidence: verified · source: sme-questions.md</p></ac:rich-text-body></ac:structured-macro>
+
+<h1>SME Question List — Generated from PDF Extraction</h1>
+<p>Grouped by suggested owner. All are closed/confirmable questions by design.</p>
+<h2>CDC / Data Platform (Rakesh, Ali, data strategy team)</h2>
+<p>1. Page 1 rates RDRS as best CDC option; pages 3/7 recommend Transactional Outbox. Which is the selected direction, or is RDRS→Replication DB the transport and Outbox the pattern for app-level events? (Top contradiction to resolve)</p>
+<p>2. What is the Replication DB technology on Linux (page 1)?</p>
+<p>3. Which DG file/entity is chosen first for CDC (doc suggests CUSTOMERS/ACCOUNTS)?</p>
+<p>4. Is the claims data model on page 4 the approved target schema for the Transactional Cache, or a draft?</p>
+<p>5. Confluent Cloud vs GCP Managed Kafka — decided?</p>
+<p>6. VPN vs Interconnect vs PSC for on-prem→GCP — decided?</p>
+<h2>DG Operations (DG SMEs / Meritain Ops)</h2>
+<p>7. Are the 2014 DRAFTS process details (Benton job #997663, WKALL 4:00pm, per-trust runs) still accurate today?</p>
+<p>8. Confirm queue counts: 7 claim queues still correct? Benton queue standardization design implemented or still pending?</p>
+<p>9. What do MCMM, MWHCSS, CSC, IMI/Individualize, WorkIT, DMWiz stand for and do?</p>
+<p>10. Non-prod DG move off the prod box — completed or still planned?</p>
+<p>11. Phoenix→Las Vegas DC migration status?</p>
+<h2>Integration (Bob's team)</h2>
+<p>12. BankTec bypass (24-hr SLA plan) — status?</p>
+<p>13. MALF inventory: which extracts still run on it?</p>
+<p>14. Sterling vs BizTalk current split: is 837/834 real-time still on BizTalk?</p>
+<p>15. WebDE→MVIS replacement timeline and consumer migration order?</p>
+<h2>Contact Center (Sunil, Ramesh)</h2>
+<p>16. Avaya→Five9 migration date?</p>
+<p>17. Edify IVR replacement scope under Five9?</p>
+<h2>North Star / Strategy (Muhammad, Tony)</h2>
+<p>18. Priority 5 in the North Star diagram — what is it? (unlabeled in extraction)</p>
+<p>19. NextGen reuse for enrollment/correspondence/ID cards — confirmed with NextGen?</p>
+<p>20. Superapp for Meritain — decision status?</p>
+<p>21. Zelis for member services evaluation (P3) — status?</p>
+<h2>Business Process (Lynn Fletcher, Terrie Nicks — per page 6)</h2>
+<p>22. Confirm: ~150 member letters (20–30 in SmartComm), ~250 claims letters (0 migrated)?</p>
+<p>23. Is a welcome email sent to members today (flagged "unclear" on the slide)?</p>
+<p>24. Confirm 60–80 green-screen applications/views figure for plan build.</p>
+<h2>Data Model Cardinality (whoever owns the page-4 claims model — likely Rakesh/Ali)</h2>
+<p>25. Is MEMBER's primary key composite (MemberID + DepNo), or MemberID alone with DepNo as attribute?</p>
+<p>26. Is SERVICE_LINE keyed on (ClaimNumber + LineNumber)? Mandatory 1-to-many from CLAIM?</p>
+<p>27. GROUP_INFO: is DivisionCode part of the PK (composite) or an attribute? Should Group and Division be separate entities?</p>
+<p>28. CLAIM-&gt;PROVIDER: mandatory or optional (can a claim exist without ProviderID, e.g. member-submitted)?</p>
+<p>29. CLAIM_TRACKING and CLAIM_DOCUMENT: one-to-many per claim confirmed? Is TrackingEventID globally unique or per-claim?</p>

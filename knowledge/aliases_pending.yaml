@@ -1,0 +1,126 @@
+scanned_on: '2026-07-12'
+scanned_files:
+- emails.md
+- estimate_impact_summary.md
+- meritain_imi_implementation_paths.md
+- meritain_imi_integration_q_a.md
+- meritain_rcs_roadmap_final_v2_1.md
+- meritain_rcs_solution_architecture.md
+- pdc_exit_e2e_arch.md
+- pdc_exit_eligibility_diagram.md
+- pdc_exit_enrollment_diagram.md
+status: pending_human_review
+note: NOTHING here has been merged into aliases.yaml. Review each item; move confirmed ones into the registry manually.
+new_name_candidates:
+- name: AETH
+  files:
+  - emails.md
+  sample_context: 'ARE they really in IMI already? As a reminder: Meritain has its own domain ad.meritain.com separate from
+    Aetna (AETH) domain. MeritainConnect portal stores user'
+- name: BrokerPS
+  files:
+  - emails.md
+  sample_context: T-BrokerPS-Meritain-MFA-SMS-QA
+- name: CEC
+  files:
+  - emails.md
+  sample_context: Can Meritain members engage with Aetna Clinical applications such as Medcompass, CEC or OneCM? Nope
+- name: CSI
+  files:
+  - emails.md
+  - meritain_rcs_roadmap_final_v2_1.md
+  - meritain_rcs_solution_architecture.md
+  - pdc_exit_e2e_arch.md
+  - pdc_exit_enrollment_diagram.md
+  sample_context: Which application collects communication preferences (email, phone, Address, language, paperless) from Meritain.com
+    and via other channels such as CSR or clinic
+- name: CVTY
+  files:
+  - pdc_exit_e2e_arch.md
+  sample_context: '### CVTY/Wholesale'
+- name: DataHUBODS
+  files:
+  - pdc_exit_e2e_arch.md
+  sample_context: '- **Meritain DataHUBODS (Tidal, Python DB2 & DataStage) a.k.a DataVision**'
+- name: MeritainID
+  files:
+  - meritain_imi_implementation_paths.md
+  - meritain_imi_integration_q_a.md
+  sample_context: "- MeritainID present in IMI event \u2713"
+- name: MultiValue
+  files:
+  - pdc_exit_enrollment_diagram.md
+  sample_context: "- INFERRED: \"DG MV-DBMS\" means DG runs on a MultiValue DBMS \u2014 evidence: \"MV-DBMS\" suffix on the\
+    \ database cylinder; consistent with the E2E diagram note \"DG is U"
+- name: NGA
+  files:
+  - emails.md
+  sample_context: Aetna will be deploying an update to prod soon (Mar 18th) on their side, to support sending out this OTP
+    message via SMS text message, via their existing 'NGA A
+- name: OneCM
+  files:
+  - emails.md
+  sample_context: Can Meritain members engage with Aetna Clinical applications such as Medcompass, CEC or OneCM? Nope
+- name: PreCerts
+  files:
+  - pdc_exit_e2e_arch.md
+  sample_context: "- Medical managment (including AHH) \u2192 AXway: \"PreCerts batch files\""
+- name: SFMC
+  files:
+  - emails.md
+  sample_context: Chiming in a little late - but wanted to add some extra detail around existing SFMC 'campaigns' and 'business
+    units' created for Meritain.
+- name: ScreenScraper
+  files:
+  - pdc_exit_e2e_arch.md
+  sample_context: "- HSA path: \"HSA data (claims)\" \u2192 HSA Extract \u2192 (toward DG/AXway area); LegaSuite \u2192 \"\
+    ScreenScraper tool\" label; Meritain APIC + \"ID card\" \u2192 Zelis"
+- name: StopLoss
+  files:
+  - pdc_exit_e2e_arch.md
+  sample_context: "- **MemberAdvocacy**, **MHAT**, **1mage**, **StopLoss Web interface**, **MH SalesForce**, **QuickClicks**,\
+    \ **CSI Web**, **MCI** \u2014 pink boxes (legend: Home Grown"
+- name: UAF
+  files:
+  - emails.md
+  sample_context: Is UAF involved in the user authentication process for members logging in to meritain.com ?***No
+- name: UniVerse
+  files:
+  - pdc_exit_e2e_arch.md
+  - pdc_exit_enrollment_diagram.md
+  sample_context: 12. "DG is UniVerse DB and Pick programming language."
+- name: WorkIT
+  files:
+  - pdc_exit_e2e_arch.md
+  sample_context: '- **Correspondence** group: **WorkIT**, **DMWiz**'
+- name: XTEN
+  files:
+  - pdc_exit_e2e_arch.md
+  sample_context: '- **HealthSparq (Cost estimator)**, **CMS**, **PBMs**, **Medical managment vendors including AHH**, **Reinsurance
+    carriers**, **Navigation Partners (Quantum, Ac'
+merge_suggestions:
+- canonical: EDP
+  candidate_alias: Preference source of Truth
+  evidence: "- **DataVision/EDP (Preference source of Truth)** \u2014 orange, full-width"
+  file: /Users/narendrakumar/eaip/knowledge/markdown/meritain_rcs_roadmap_final_v2_1.md
+  line: 100
+  status: pending
+- canonical: IPP
+  candidate_alias: Book of Record
+  evidence: '| **Preference Storage** | Local SQL DB + DG | IPP (Book of Record) |'
+  file: /Users/narendrakumar/eaip/knowledge/markdown/meritain_rcs_solution_architecture.md
+  line: 378
+  status: pending
+- canonical: IMI
+  candidate_alias: Individual Master Index
+  evidence: Per the separate analysis in [Meritain_IMI_Integration_Q&A.md](Meritain_IMI_Integration_Q&A.md), the Meritain
+    integration uses **IMI (Individual Master Index)** rather than EPH. Key implications for R
+  file: /Users/narendrakumar/eaip/knowledge/markdown/meritain_rcs_solution_architecture.md
+  line: 445
+  status: pending
+- canonical: DG
+  candidate_alias: UniVerse DB
+  evidence: 12. "DG is UniVerse DB and Pick programming language."
+  file: /Users/narendrakumar/eaip/knowledge/markdown/pdc_exit_e2e_arch.md
+  line: 143
+  status: pending

@@ -1,0 +1,15 @@
+<ac:structured-macro ac:name="warning"><ac:rich-text-body><p><strong>PROPOSED</strong> — target architecture, not implemented.</p></ac:rich-text-body></ac:structured-macro>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-02.png"/></ac:image>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-08.png"/></ac:image>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-09.png"/></ac:image>
+<h1>Meritain North Star — Target Architecture</h1>
+<h2>Central principle (verbatim)</h2>
+<p>"No one will interact with DG directly. All DG interaction will be done through data platform."</p>
+<h2>Priorities (verbatim from diagram)</h2>
+<ul><li>P1: CDC (Change Data Capture) from DG</li><li>P2: refactor DG and create domain-driven architecture (domains: Provider/Rates/Network, Claims, Member, Plan Sponsor, Benefit Admin setup, Case setup, Draft Payment)</li><li>P3: Joint venture with AI-based Enterprise contact center; Evaluate Zelis for Member services</li><li>P4: (Superapp question: "Can we use Superapp for Meritain?")</li><li>P5: (unlabeled in extraction)</li><li>P6: Agentic Enrollment Verification Platform + Agentic Claim Decision Platform</li><li>P7: Predictive Analytics Apps (model training, registry, experimentation; care gaps, next best action; LLM for explainability)</li><li>P8: AI-Powered Production Support (incident triage, ticket analysis/auto-resolution, claims debugging assistant, proactive detection, runbook automation)</li><li>P9: Change all integrations with internal partners to real time where possible</li></ul>
+<h2>Layers</h2>
+<ul><li>Enterprise Data Platform: Data Lake (BigQuery), Data HUB/Transactional Cache, Raw Data (ASIS), Data Mart, Meritain FHIR store</li><li>Ent. Integration Platform: Service Layer, Event Layer, Kong (internal GW), APIGEE/FHIR (external GW), File Gateway/B2B GW</li><li>Contact Center AI layer: Voice/Digital/Process Intelligent Agents, Salesforce Service Cloud Org, Enterprise Service Platform (Salesforce Health Cloud), GPS console, Real-time Omnichannel Engagement Engine, Contact Engagement Decision Engine; Agent Productivity (GenAI): assist/coaching, knowledge assist, interaction summary/transcription</li><li>NextGen assets: NG Corresponding Platform, Engagement Platform, Digital Platform, NG Constituent Platform (reuse for enrollment processing and correspondence incl. ID card printing — to be confirmed with NextGen)</li></ul>
+<h2>Agentic platforms (P6, verbatim descriptions)</h2>
+<ul><li>Agentic Enrollment Verification: validates enrollment data against client-given rules; copilot to expedite enrollment processing using LLM and RAG; components: Agent Orchestration Layer, RAG Knowledge Layer, Audit &amp; Evidence store, Explanation &amp; Communication Layer (LLM)</li><li>Agentic Claims Decision: addresses manual adjudication; copilot to expedite claim processing using LLM and RAG; same 4-layer structure</li></ul>
+<h2>Unclear</h2>
+<ul><li>P5 content; Superapp decision; NextGen reuse confirmation status</li></ul>

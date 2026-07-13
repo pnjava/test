@@ -1,0 +1,11 @@
+<ac:structured-macro ac:name="info"><ac:rich-text-body><p>state: current · confidence: verified · source: ITPR078770 PDF, page 13</p></ac:rich-text-body></ac:structured-macro>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-13.png"/></ac:image>
+<h1>WebDE — DG Service Layer</h1>
+<h2>What it is</h2>
+<p>Service layer running ON the DG box, written in same technology (Universe). COTS by Rocket (2nd version). Exposes Universe files as objects — only 2 properties and 1 method. To be replaced with MultiValueIS (MVIS) — Rocket Universe.</p>
+<h2>Components (verbatim from Rocket docs excerpt)</h2>
+<ul><li>RedBack Object Server: manages access to RedBack applications, dynamic runtime interfaces, maintains repository of definitions/code</li><li>Java Scheduler (Connection Manager): manages data transfer between RedBack Object Server and web server; load balancing; allocates U2 licenses as webshares</li><li>Admin API Server; RedBeans (Java API) and RedPages.NET (.NET API); Web Designer (Eclipse-based RBO design tool); U2 Web Designer desktop config tool</li></ul>
+<h2>Consumers of WebDE</h2>
+<ul><li>Meritain APIC: Accumulators/Cost Calc; ID Cards</li><li>EDI27X: 270/271 &amp; 276/277</li><li>Claim System Connect: small .Net app serializing XML for .Net (from Meritain portals); QuickClicks (web page search e.g. plan docs &amp; certs)</li><li>Customer Service Interface Web (CSI Web): front end for DG for customer services — data lookup and call logging</li><li>IVRS (Edify IVR)</li></ul>
+<h2>Unclear</h2>
+<ul><li>MVIS replacement timeline and scope</li></ul>

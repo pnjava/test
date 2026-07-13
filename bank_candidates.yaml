@@ -1,0 +1,73 @@
+candidates:
+- question: What is DG?
+  first_asked: '2026-07-12'
+  last_asked: '2026-07-13'
+  count: 3
+- question: Which vendor handles paper claims OCR conversion?
+  first_asked: '2026-07-12'
+  last_asked: '2026-07-12'
+  count: 1
+- question: What is MCI?
+  first_asked: '2026-07-12'
+  last_asked: '2026-07-12'
+  count: 1
+- question: How much repricing goes to BAMR?
+  first_asked: '2026-07-12'
+  last_asked: '2026-07-13'
+  count: 12
+- question: How are ID cards printed?
+  first_asked: '2026-07-12'
+  last_asked: '2026-07-13'
+  count: 13
+- question: What runs the nightly payment process?
+  first_asked: '2026-07-12'
+  last_asked: '2026-07-13'
+  count: 12
+- question: What are the 5 CDC non-negotiables?
+  first_asked: '2026-07-12'
+  last_asked: '2026-07-13'
+  count: 12
+- question: Is MCI the same as MICS?
+  first_asked: '2026-07-12'
+  last_asked: '2026-07-13'
+  count: 16
+- question: Is Five9 confirmed?
+  first_asked: '2026-07-12'
+  last_asked: '2026-07-13'
+  count: 13
+- question: How many Universe licenses does Meritain own?
+  first_asked: '2026-07-12'
+  last_asked: '2026-07-13'
+  count: 12
+- question: can you tele me teh systems DG interctas with?
+  first_asked: '2026-07-12'
+  last_asked: '2026-07-12'
+  count: 3
+- question: can you tell me the systems DG interacts with
+  first_asked: '2026-07-12'
+  last_asked: '2026-07-13'
+  count: 40
+- question: does webde and DG conencted
+  first_asked: '2026-07-13'
+  last_asked: '2026-07-13'
+  count: 1
+- question: what are all the componenets DG is connected with ?
+  first_asked: '2026-07-13'
+  last_asked: '2026-07-13'
+  count: 1
+- question: What is the exact file format specification of Plan Sponsor enrollment files?
+  first_asked: '2026-07-13'
+  last_asked: '2026-07-13'
+  count: 1
+- question: Is NextGen reuse confirmed?
+  first_asked: '2026-07-13'
+  last_asked: '2026-07-13'
+  count: 2
+- question: Who owns CSI Web and what technology is it built with?
+  first_asked: '2026-07-13'
+  last_asked: '2026-07-13'
+  count: 1
+- question: What channels does the Meritain RCS welcome campaign use?
+  first_asked: '2026-07-13'
+  last_asked: '2026-07-13'
+  count: 3

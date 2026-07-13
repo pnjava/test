@@ -1,0 +1,59 @@
+gaps:
+- id: gap001
+  question: What is the SLA for IPP API response times?
+  missing_info:
+  - 'MISSING:'
+  date: '2026-07-12'
+  last_asked: '2026-07-12'
+  ask_count: 2
+  suggested_sme: IPP Team
+  status: open
+  retrieved_chunks_considered:
+  - meritain_rcs_solution_architecture::c013
+  - meritain_rcs_solution_architecture::c005
+  - meritain_rcs_solution_architecture::c008
+  - emails::c008
+  - meritain_rcs_solution_architecture::c014
+  - meritain_rcs_solution_architecture::c011
+  - emails::c009
+  - emails::c005
+- id: gap002
+  question: What is the exact file format specification of Plan Sponsor enrollment files?
+  missing_info:
+  - 'MISSING:'
+  date: '2026-07-12'
+  last_asked: '2026-07-12'
+  ask_count: 1
+  suggested_sme: Enrollment Process Team (TBD)
+  status: open
+  retrieved_chunks_considered:
+  - meritain_rcs_solution_architecture::c003
+  - pdc_exit_enrollment_diagram::c001
+  - pdc_exit_eligibility_diagram::c003
+  - pdc_exit_enrollment_diagram::c002
+  - pdc_exit_eligibility_diagram::c004
+  - meritain_rcs_roadmap_final_v2_1::c005
+  - meritain_rcs_solution_architecture::c009
+  - meritain_rcs_solution_architecture::c006
+- id: gap003
+  question: Who is the current on-call contact for MaCE platform incidents?
+  missing_info:
+  - 'MISSING:'
+  date: '2026-07-12'
+  last_asked: '2026-07-12'
+  ask_count: 1
+  suggested_sme: MaCE Team
+  status: open
+  retrieved_chunks_considered:
+  - meritain_rcs_solution_architecture::c007
+  - meritain_rcs_solution_architecture::c008
+  - meritain_rcs_solution_architecture::c001
+  - meritain_rcs_solution_architecture::c005
+  - meritain_rcs_solution_architecture::c015
+  - meritain_rcs_solution_architecture::c013
+  - pdc_exit_e2e_arch::c008
+  - meritain_rcs_roadmap_final_v2_1::c005
+metadata:
+  updated: '2026-07-12'
+  open: 3
+  answered: 0

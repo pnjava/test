@@ -1,0 +1,551 @@
+# System Name Alias Registry (T2.1)
+#
+# canonical_name -> aliases, with status:
+#   confirmed = the NAME appears verbatim in a source artifact; listed aliases
+#               are verbatim-documented equivalences (evidence cited)
+#   pending   = the name itself is speculative; needs human/SME confirmation
+# proposed_aliases = equivalences that are plausible but NOT verbatim-documented;
+#   ignored by the chunker/retriever until a human moves them into `aliases`.
+#
+# RULES:
+# - The scanner (src/alias_scanner.py) NEVER writes to this file. New names and
+#   merge candidates go to knowledge/aliases_pending.yaml for human review.
+# - Chunker/retriever (M3) resolve aliases to canonical_name using CONFIRMED
+#   entries only.
+
+systems:
+  - canonical_name: DG
+    aliases: []
+    proposed_aliases:
+      - "Digital Gateway"
+      - "Data Governance"
+      - "UniVerse DB"
+    status: confirmed
+    evidence: "Name verbatim everywhere. Arch doc 3.5 gives two conflicting expansions ('Data Governance / Digital Gateway') — hence proposed, not confirmed. E2E diagram: 'TPA Admin backnone system DG', 'DG is UniVerse DB and Pick programming language'. Owner: Bill Cadman / DG Team."
+    notes: "Core TPA admin backbone (enrollment, eligibility, claims adjudication, ID cards, draft processing). Runs UniVerse (MultiValue DBMS) + Pick."
+
+  - canonical_name: IPP
+    aliases:
+      - "Intelligent Preference Platform"
+    status: confirmed
+    evidence: "Arch doc 3.4: 'Full Name: Intelligent Preference Platform'. Enterprise (CVS/Aetna) preference Book of Record."
+
+  - canonical_name: EPH
+    aliases:
+      - "Enterprise Provider Hub"
+    status: confirmed
+    evidence: "Estimate_Impact_Summary.md: 'EPH (Enterprise Provider Hub)' — Aetna integration source system."
+
+  - canonical_name: IMI
+    aliases: []
+    proposed_aliases:
+      - "Individual Member IMI"
+      - "Individual Master Index"
+    status: confirmed
+    evidence: "Name verbatim in impact summary + E2E diagram (blue 'Enterprise shared app' under Constituent). Impact doc's expansion 'Individual Member IMI' is self-referential; scanner found 'Individual Master Index' in the Q&A doc — likelier, awaiting confirmation."
+    notes: "Meritain enrollment event source for the new integration; 3-5x effort vs EPH."
+
+  - canonical_name: DataVision
+    aliases:
+      - "Data Vision"
+      - "DataVision/EDP"
+      - "Meritain DataHUBODS"
+    status: confirmed
+    evidence: "E2E diagram Analytics box: 'Meritain DataHUBODS (Tidal, Python DB2 & DataStage) a.k.a DataVision' (verbatim a.k.a). Slide 11 + arch doc: 'DataVision/EDP (Preference source of Truth)'."
+
+  - canonical_name: EDP
+    aliases: []
+    status: confirmed
+    evidence: "Name verbatim as 'DataVision/EDP' in arch doc and slide 11; expansion never given (possibly Enterprise Data Platform — unconfirmed)."
+
+  - canonical_name: WebDE
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram note 5: 'WebDE is service layer on DG box written in same technology (Universe).'"
+
+  - canonical_name: MaCE
+    aliases:
+      - "MaCE messaging platform"
+      - "MaCE Messaging Platform"
+    status: confirmed
+    evidence: "Name verbatim on slide 11 ('MaCE messaging platform') and throughout arch doc. Acronym expansion never given in any artifact — expansion still an open SME question."
+
+  - canonical_name: Meritain Connect
+    aliases:
+      - "MeritainConnect"
+      - "Meritain Connect Plan Sponser Portal"
+    status: confirmed
+    evidence: "Same portal across arch doc ('Meritain Connect'), E2E diagram ('MeritainConnect'), enrollment diagram ('Meritain Connect Plan Sponser Portal' [sic])."
+
+  - canonical_name: CSI Web
+    aliases: []
+    status: confirmed
+    evidence: "Consistent across arch doc (Chris Byrd's CSR app), E2E diagram (Business ops 'CSR Frontend'), slide 11."
+
+  - canonical_name: MALF
+    aliases:
+      - "Meritain Automated Lightsout Framework"
+    status: confirmed
+    evidence: "Enrollment diagram narrative (Bob): 'internally developed called MALF (Meritain Automated Lightsout Framework), that leverages .Net and XSLT'."
+
+  - canonical_name: Sterling Gateway
+    aliases:
+      - "Sterling"
+    status: confirmed
+    evidence: "Enrollment diagram narrative: all new file translation on 'Sterling with ITX/ITXA' since 2020 decision."
+
+  - canonical_name: BizTalk
+    aliases:
+      - "Biztalk"
+      - "Biztalk-1"
+    status: confirmed
+    evidence: "E2E diagram shows 'Biztalk' boxes; enrollment diagram 'BizTalk (Just x12 files)'. Frozen — no new development (Bob narrative)."
+
+  - canonical_name: Axway
+    aliases:
+      - "AXway"
+    status: confirmed
+    evidence: "Both spellings across E2E diagram (AXway) and enrollment diagram (Axway); same managed file transfer layer."
+
+  - canonical_name: BAMR
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram: 'BAMR (repricer)' under CVTY/Wholesale; '80% to 90% transactions are rePriced here.' Expansion unknown."
+
+  - canonical_name: MCPS
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram: CVTY/Wholesale box; future repricing target bypassing BankTec. Expansion unknown."
+
+  - canonical_name: MEA
+    aliases: []
+    status: confirmed
+    evidence: "Eligibility diagram prose: 'Once MEA processes an enrollment event...'. Expansion unknown — possibly Meritain Enrollment App."
+
+  - canonical_name: MCMM
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram, System of Engagement box. Expansion unknown."
+
+  - canonical_name: MHAT
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram, Business operations ('Log Audit'). Expansion unknown."
+
+  - canonical_name: MCI
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram, Business operations. Expansion unknown."
+
+  - canonical_name: MWHCSS
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram, Health Fund Admin. Expansion unknown."
+
+  - canonical_name: EBI
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram, two instances near GCP/Analytics. Expansion unknown."
+
+  - canonical_name: CSC
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram, two integration boxes. Expansion unknown."
+
+  - canonical_name: ECS
+    aliases: []
+    status: confirmed
+    evidence: "Roadmap slide 7: 'Day 2 – Full RCS/ECS Capability'. Expansion unknown."
+
+  - canonical_name: ITX
+    aliases:
+      - "ITXA"
+      - "ITX/ITXA"
+    status: confirmed
+    evidence: "Bob narrative: translation on 'Sterling with ITX/ITXA'. Presumed IBM Transformation Extender (+ Advanced) — not stated in source."
+
+  - canonical_name: MCE
+    aliases: []
+    status: pending
+    evidence: "Placeholder — verify whether MaCE is ever written MCE in other sources before merging."
+
+  # --- vendors / external systems (seen in E2E + eligibility diagrams, arch doc) ---
+
+  - canonical_name: Zelis
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram: ID cards, EOBs/letters print-mail, paper checks. Eligibility diagram: 'ID Cards (Zelis)'."
+
+  - canonical_name: ECHO
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram Constituent AR & AP: 'eChecks and ERAs', provider funds."
+
+  - canonical_name: CSG
+    aliases: []
+    status: confirmed
+    evidence: "Arch doc: SMS delivery vendor under MaCE."
+
+  - canonical_name: Infobip
+    aliases:
+      - "InfoBip"
+    status: confirmed
+    evidence: "Arch doc + E2E: RCS delivery vendor."
+
+  - canonical_name: HealthSparq
+    aliases:
+      - "HealthSparq (Cost Estimator Tool)"
+      - "HealthSparq (Cost estimator)"
+    status: confirmed
+    evidence: "E2E diagram, both External Partners groups."
+
+  - canonical_name: Kofax
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram: paper claims intake from Meritain.com."
+
+  - canonical_name: SmartComm
+    aliases: []
+    proposed_aliases:
+      - "Smartcom"
+    status: confirmed
+    evidence: "E2E: AWS-hosted composition. Eligibility diagram spells 'Smartcom' ('Letters (DG-USPS, Zelis, Smartcom)', 'Process movings to Smartcom') — likely same product, confirm before merging."
+
+  - canonical_name: DocStore
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram: static reports store fed from DG/WebDE."
+
+  - canonical_name: LegaSuite
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram: ScreenScraper tool near HSA path."
+
+  - canonical_name: DataStage
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram: part of 'Meritain DataHUBODS (Tidal, Python DB2 & DataStage)'."
+
+  - canonical_name: Tidal
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram: DataHUBODS toolchain component (scheduler)."
+
+  - canonical_name: Sage 300
+    aliases:
+      - "AccPac"
+      - "Sage 300 (AccPac)"
+    status: confirmed
+    evidence: "E2E diagram Financial Managment box: 'Sage 300 (AccPac)'."
+
+  - canonical_name: BankTec
+    aliases:
+      - "BankTEC"
+    status: confirmed
+    evidence: "E2E diagram: both spellings on same page (paper claims OCR partner, repricing feed)."
+
+  - canonical_name: ChangeHealthCare
+    aliases:
+      - "Change Health"
+      - "ChangeHealthcare"
+    status: confirmed
+    evidence: "E2E diagram External Partners; eligibility diagram Medicare Crossover note 'previously through Change Health'."
+
+  - canonical_name: Availity
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram: clearing house, hourly 837/999."
+
+  - canonical_name: MultiPlan
+    aliases: []
+    status: confirmed
+    evidence: "Eligibility diagram prose: repricing vendor example alongside Zelis."
+
+  - canonical_name: Wex Health
+    aliases:
+      - "Wex"
+      - "WEX"
+    status: confirmed
+    evidence: "E2E Health Fund Admin 'Wex Health'; eligibility diagram 'Wex Inbound/Outbound (Web Service)'."
+
+  - canonical_name: HealthyMerits Portal
+    aliases:
+      - "HealthyMerits"
+    status: confirmed
+    evidence: "E2E diagram System of Engagement (member wellness portal)."
+
+  - canonical_name: MemberAdvocacy
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram Business operations (home-grown app). Purpose/expansion not stated."
+
+  - canonical_name: QuickClicks
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram Business operations ('Web tool'). Purpose not stated."
+
+  - canonical_name: 1mage
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram: document imaging vendor asset ('get Image', 'Archive data')."
+
+  - canonical_name: EDI27X
+    aliases: []
+    status: confirmed
+    evidence: "E2E diagram: real-time 270/271 & 276/277 gateway; 50% Aetna / 50% ChangeHealthCare."
+
+  - canonical_name: Meritain Welcome Message Service
+    aliases: []
+    proposed_aliases:
+      - "MemCommService"
+      - "MemberCommService"
+    status: confirmed
+    evidence: "Slide 11 'Meritain Welcome Message Service' (new component); arch doc uses MemCommService/MemberCommService — likely same planned service, confirm before merging."
+
+  - canonical_name: BeneLynk
+    aliases: []
+    status: pending
+    evidence: "Appears in extracted sources; role not yet established. Verify which artifact/context introduced it."
+
+  - canonical_name: Payflex
+    aliases: []
+    status: confirmed
+    evidence: "Eligibility diagram outgoing: 'Payflex Extracts (FTP)'."
+
+  - canonical_name: SimplePay
+    aliases: []
+    proposed_aliases:
+      - "Coup Health"
+    status: confirmed
+    evidence: "Eligibility diagram outgoing: 'SimplePay / Coup Health (FTP)' — 'Coup Health' spelling uncertain."
+
+  - canonical_name: MH SalesForce
+    aliases: []
+    proposed_aliases:
+      - "Salesforce"
+    status: confirmed
+    evidence: "E2E Business operations 'MH SalesForce' (Sales Marketing); arch doc lists Salesforce as email vendor — may be two different things (CRM vs email delivery). Confirm before merging."
+
+  - canonical_name: DV
+    aliases: []
+    status: pending
+    evidence: "Candidate abbreviation of DataVision seen in extractions — confirm context before merging into DataVision."
+
+# Domain vocabulary the scanner should NOT flag as system names.
+scanner_ignore:
+  # transactions / standards / formats
+  - EDI
+  - X12
+  - XML
+  - XSLT
+  - SOAP
+  - CSV
+  - PDF
+  - OCR
+  - ACK
+  - FTP
+  - SFTP
+  - API
+  - APIS
+  - APIC   # appears as 'Meritain APIC' / 'Aetna APIC' — gateway suffix, handled as part of longer names
+  - SQL
+  - SAAS
+  - COTS
+  - MV
+  - DBMS
+  - DB2
+  - AIX
+  - GCP
+  - AWS
+  - NET
+  # healthcare/regulatory
+  - TCPA
+  - RND
+  - DNC
+  - EDNC
+  - PHI
+  - PII
+  - SSN
+  - DOB
+  - EOB
+  - EOBS
+  - COB
+  - COBA
+  - COBRA
+  - HSA
+  - HIPPA   # sic in source
+  - HIPAA
+  - CMS     # federal agency, external partner — not a Meritain system alias
+  - PPO
+  - TPA
+  - TIN
+  - USPS
+  - EFT
+  - ERAS
+  - PBM
+  - PBMS
+  - AHH
+  - PHIA
+  - RX
+  # messaging/channels
+  - RCS
+  - SMS
+  - EMAIL
+  - IVR
+  - IVRS
+  - OTP
+  # org/misc
+  - USA
+  - USBANK
+  - HR
+  - IT
+  - CSR
+  - SME
+  - BOR
+  - OLTP
+  - SLA
+  - DR
+  - CPU
+  - CPUS
+  - E2E
+  - UI
+  - UAT
+  - TBD
+  - FAQ
+  - AKA
+  - ID
+  - IID
+  - BU
+  - AZ
+  - CT
+  - AR
+  - AP
+  - PDC     # project name (PDC Exit Migration), not a system
+  - ITPR    # ticket prefix
+  - MVP
+  - YAML
+  - README
+  - INFERRED
+  - UNCLEAR
+  # abbreviations / tokens that are not systems
+  - FW      # email forward prefix
+  - RE      # email reply prefix
+  - ASAP
+  - ASC     # ASC X12
+  - ASP     # ASP.NET
+  - ARCH
+  - CRUD
+  - DC      # data center
+  - MFA
+  - HTTPS
+  - HTTP
+  - IBM
+  - LAN
+  - GPS
+  - FCC
+  - FSA
+  - ELK
+  - MH      # Meritain Health prefix
+  - MC
+  - AD      # Active Directory
+  - AM
+  - PM
+  - FR
+  - LOC
+  - I90
+  - CVS
+  - AETNA
+  - MERITAIN
+  - GETDATE
+  - VARCHAR
+  - DATETIME2
+  # generic tech, not Meritain systems
+  - DB
+  - SSO
+  - SAML
+  - TLS
+  - MTLS
+  - OAUTH
+  - PCI     # PCI Services box kept via longer-name review; bare PCI is the standard
+  - QA
+  - RTO
+  - RPO
+  - VPC
+  - TDS
+  - RES
+  - INFO
+  - PS
+  - OPENAPI
+  - OPENAPI
+  - POWERPOINT
+  - PLANTUML
+  - SWAGGER
+  # database schema field names (arch doc data model tables)
+  - CELLPHONE
+  - MEMBERID
+  - PLANSPONSORID
+  - PREFERENCEID
+  - AUDITID
+  - CONSENTFLAG
+  - CONSENTSOURCE
+  - CONSENTTIMESTAMP
+  - CONSENTTYPE
+  - CONSENTAUDITLOG
+  - CREATEDDATE
+  - MODIFIEDDATE
+  - ISACTIVE
+  - SMSCONSENTFLAG
+  - RCSCONSENTFLAG
+  - EMAILCONSENTFLAG
+  - EOBPREFERENCE
+  - MEMBERPREFERENCES
+  # US state abbreviations
+  - AL
+  - AK
+  - CA
+  - CO
+  - DE
+  - FL
+  - GA
+  - IA
+  - IL
+  - KS
+  - KY
+  - LA
+  - MA
+  - MD
+  - ME
+  - MI
+  - MN
+  - MO
+  - NC
+  - ND
+  - NE
+  - NH
+  - NJ
+  - NM
+  - NV
+  - NY
+  - OH
+  - OK
+  - PA
+  - RI
+  - SC
+  - SD
+  - TN
+  - TX
+  - UT
+  - VA
+  - VT
+  - WA
+  - WI
+  - WV
+  - WY
+
+metadata:
+  created: "2026-07-12"
+  seeded_from: "9 extracted artifacts (knowledge/markdown/)"
+  total_entries: 54
+  confirmed_entries: 51
+  pending_entries: 3
+  review_owner: "Narendra"

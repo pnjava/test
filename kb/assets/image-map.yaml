@@ -1,0 +1,30 @@
+# Maps KB docs to their source diagram images (page renders of ITPR078770)
+# Used by the wiki generator to embed the right diagram(s) on each page.
+mappings:
+  00-stitched-architecture-overview: [page-19.png, page-02.png]   # hero: landscape + north star canvas
+  01-cdc-options-and-gcp-connectivity: [page-01.png]
+  02-north-star-target-architecture: [page-02.png, page-08.png, page-09.png]
+  03-cdc-transactional-outbox-reference: [page-03.png, page-07.png]
+  04-claims-data-model: [page-04.png]
+  05-plan-build-process: [page-06.png]        # SENSITIVITY: internal — contains employee names/screenshots
+  06-dg-current-state-landscape: [page-19.png]
+  07-transaction-cache-commercial: [page-08.png, page-09.png]
+  08-docstore: [page-10.png]
+  09-datavision-analytics: [page-11.png, page-15.png]
+  10-bamr-repricer: [page-12.png]
+  11-webde: [page-13.png]
+  12-mci-legasuite: [page-14.png]
+  13-ebi-smartcomm: [page-15.png, page-16.png]
+  14-rightfax: [page-17.png]
+  15-stoploss: [page-18.png]
+  16-enrollment-process: [page-20.png]
+  17-eligibility-flows: [page-21.png]
+  18-claims-workflow: [page-22.png, page-23.png]
+  19-contact-center-ivr: [page-24.png]
+  20-idcard-printing: [page-25.png]
+  21-internal-repricing: [page-26.png]
+  22-benton-queues: [page-27.png]
+  23-drafts-process: [page-28.png, page-29.png]
+  24-context-diagram: [page-30.png]
+  25-1mage-imaging: [page-31.png]
+  26-lucidchart-template: [page-05.png]       # excluded from wiki nav; template only

@@ -1,0 +1,13 @@
+title: CDC Options & DG→GCP Connectivity (Proposed)
+group: Target State
+labels:
+- state-proposed
+- confidence-verified-diagram-content-design-not-yet-
+- tag-dg
+- tag-cdc
+- tag-kafka
+- tag-mongodb
+- tag-gcp
+- tag-connectivity
+attachments:
+- /Users/narendrakumar/eaip/kb/assets/page-01.png

@@ -1,0 +1,360 @@
+---
+# Golden Question Set for EAIP MVP
+# Purpose: Establish ground truth before building the KB
+# Questions are sourced from Meritain integration architecture, RCS initiative, and IMI complexity analysis
+# Date: 2026-07-11
+
+questions:
+  - id: q001
+    question: What is the primary difference between the Aetna integration (EPH-based) and the Meritain integration (IMI-based)?
+    expected_answer: Aetna uses EPH (Enterprise Provider Hub) as the source system, while Meritain uses IMI (Individual Member IMI). These are different systems with different APIs, event structures, and business logic, requiring separate integration efforts rather than a simple copy of the Aetna implementation.
+    source_artifact: Estimate_Impact_Summary.md
+    known_answer: true
+    confidence: verified
+
+  - id: q002
+    question: What is the estimated effort multiplier for the Meritain IMI integration compared to a baseline new feature?
+    expected_answer: "3-5x multiplier compared to a typical new API integration effort. The estimate ranges from 7-8 weeks (optimistic) to 14-16 weeks (pessimistic), with a nominal 10-12 weeks."
+    source_artifact: Estimate_Impact_Summary.md
+    known_answer: true
+    confidence: verified
+
+  - id: q003
+    question: What are the 5 key complexity factors that make Meritain-IMI integration different from a simple add-on to Aetna?
+    expected_answer: "1) NEW EVENT SOURCE - IMI vs EPH event structures differ; 2) PROXY ID RESOLUTION - requires lookup and possibly async processing; 3) CROSS-BUSINESS-UNIT scenarios - same individual in both Meritain and Aetna; 4) DATA MODEL DIFFERENCES - field mappings not 1:1; 5) TESTING MULTIPLIER - requires cross-BU test scenarios."
+    source_artifact: Estimate_Impact_Summary.md
+    known_answer: true
+    confidence: verified
+
+  - id: q004
+    question: What is the RCS Meritain initiative trying to accomplish?
+    expected_answer: "Enable Meritain Health to send RCS/SMS/Email welcome and onboarding messages to newly enrolled members, with proper consent management and TCPA compliance."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: true
+    confidence: verified
+
+  - id: q005
+    question: What are the two phases (Day 1 and Day 2) of the Meritain RCS implementation strategy?
+    expected_answer: "Day 1 (tactical): Use DataVision/EDP as preference source, with local SQL database for preference storage. Day 2 (strategic): Migrate to IPP (Intelligent Preference Platform) as the Book of Record, sunsetting the local SQL database."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: true
+    confidence: verified
+
+  - id: q006
+    question: What systems currently collect and manage member preferences in the Meritain ecosystem?
+    expected_answer: "CSI Web (ASP.NET/SQL Server), Meritain Connect, Plan Sponsor Enrollment Files, and DG (Digital Gateway/Data Governance) system. Day 1 uses local SQL; Day 2 will use IPP as the authoritative source."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: true
+    confidence: verified
+
+  - id: q007
+    question: What is IPP (Intelligent Preference Platform) and what role does it play?
+    expected_answer: "IPP is an enterprise CVS/Aetna platform that will serve as the Book of Record for all member preferences and consent. It stores member preferences, manages prior express consent with audit trail, provides preference lookup APIs for MaCE, handles unsubscribe/opt-out, and performs DNC/RND checks."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: true
+    confidence: verified
+
+  - id: q008
+    question: What is DataVision/EDP and what is its purpose in Day 1 of the RCS implementation?
+    expected_answer: "DataVision/EDP is the preference source of truth for Day 1. It aggregates preferences from DG, IPP (BoR), and local SQL database. In Day 2, it will be sunset by IPP as the single source of truth."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: true
+    confidence: verified
+
+  - id: q009
+    question: What messaging platforms will Meritain use to deliver communications to members?
+    expected_answer: "Infobip (for RCS), CSG (for SMS), and Salesforce (for Email), orchestrated through the MaCE (Messaging and Communication Engine) platform."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: true
+    confidence: verified
+
+  - id: q010
+    question: What are the key fields required in the proposed SQL schema for Day 1 member preferences?
+    expected_answer: "MemberID, PlanSponsorID, CellPhone, Email, SMSConsentFlag, RCSConsentFlag, EmailConsentFlag, EOBPreference (EMAIL/PAPER/BOTH), ConsentSource, ConsentTimestamp, ConsentType (TRANSACTIONAL/MARKETING), CreatedDate, ModifiedDate, IsActive."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: true
+    confidence: verified
+
+  - id: q011
+    question: What are the business logic implications of the IID-to-Proxy resolution in the Meritain integration?
+    expected_answer: "The resolution requires a lookup (which may be synchronous or asynchronous), may need caching strategy, and has performance SLA implications. This adds approximately 30% to the business logic code compared to baseline."
+    source_artifact: Estimate_Impact_Summary.md
+    known_answer: true
+    confidence: verified
+
+  - id: q012
+    question: What is the testing strategy for the cross-business-unit scenarios in Meritain-Aetna integration?
+    expected_answer: "Testing is split into three parts: ~40% for Aetna data scenarios, ~40% for Meritain data scenarios, and ~20% for cross-BU scenarios where the same individual appears in both systems with different Proxy IDs. This multiplies total testing effort by ~60%."
+    source_artifact: Estimate_Impact_Summary.md
+    known_answer: true
+    confidence: verified
+
+  - id: q013
+    question: What aspects of the Aetna integration CAN be reused for the Meritain-IMI integration?
+    expected_answer: "General event processing framework, Proxy ID concept, enrichment service patterns, error handling framework, and logging/monitoring patterns. Overall reuse value is approximately 40-50% of code."
+    source_artifact: Estimate_Impact_Summary.md
+    known_answer: true
+    confidence: verified
+
+  - id: q014
+    question: Who are the key stakeholders/owners mentioned for Meritain RCS components?
+    expected_answer: "Chris Byrd (CSI Web, Digital Preference APIs), IPP Team (Intelligent Preference Platform), DG Team/Bill Cadman (Digital Gateway preferences), MaCE Team (Messaging platform), and Muhammad Mudassar (Lead Architect)."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: true
+    confidence: verified
+
+  - id: q015
+    question: What is the risk premium that should be added to the Meritain-IMI estimate due to unknown factors?
+    expected_answer: "A 20% buffer should be added to the nominal estimate (10-12 weeks). Unknown factors that could add 2-4 weeks include: IMI API documentation quality (-1-2 weeks), cross-BU member behavior complexity (+1 week), real-time vs batch performance requirements (+1 week), and integration dependencies (+1-2 weeks)."
+    source_artifact: Estimate_Impact_Summary.md
+    known_answer: true
+    confidence: verified
+
+  - id: q016
+    question: What is the consent management assumption for Day 1 of the RCS implementation?
+    expected_answer: "If an enrollment file contains a phone number, prior express consent is assumed to be granted. No explicit consent capture is required for Day 1 since transactional messages carry low TCPA risk."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: true
+    confidence: verified
+
+  - id: q017
+    question: How does the enrollment process interact with DG (Digital Gateway) in the Meritain RCS architecture?
+    expected_answer: "Plan Sponsor Enrollment Files flow into the Enrollment Process, which stores group configuration and preferences in DG. DG stores enrollment-based preferences (primarily EOB) and feeds into DataVision/EDP. Day 2 will replace this with direct IPP API calls."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: true
+    confidence: verified
+
+  - id: q018
+    question: What team composition is needed to deliver the Meritain-IMI integration?
+    expected_answer: "1 Backend Engineer (full-time, 10-12 weeks), 1 QA Engineer (2-3 weeks focused on IMI scenarios), 0.5 Data Engineer (3-4 weeks for data model analysis), and 0.25 Architect (2-3 weeks for design reviews)."
+    source_artifact: Estimate_Impact_Summary.md
+    known_answer: true
+    confidence: verified
+
+  - id: q019
+    question: What is the relationship between CSI Web and the Meritain Connect portal in the RCS architecture?
+    expected_answer: "Unknown — both are mentioned as engagement/digital layer systems that need enhancement to capture cell phone number, SMS consent, RCS preference, and email preference, but the relationship/separation between them is not clearly defined in the current documentation."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: architecture_clarity
+    suggested_owner: Chris Byrd
+
+  - id: q020
+    question: What is the exact file format of Plan Sponsor Enrollment Files?
+    expected_answer: "Unknown — documented as TBD. Could be CSV, EDI 834, or fixed-width format."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: data_format
+    suggested_owner: TBD
+
+  - id: q021
+    question: Which team currently processes Plan Sponsor Enrollment Files?
+    expected_answer: "Unknown"
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: process_ownership
+    suggested_owner: TBD
+
+  - id: q022
+    question: Where do Plan Sponsor Enrollment Files currently land in the infrastructure?
+    expected_answer: "Unknown — could be file share, SFTP, or S3, but not documented."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: infrastructure
+    suggested_owner: TBD
+
+  - id: q023
+    question: What is the current technology stack for CSI Web?
+    expected_answer: "Assumed to be ASP.NET / SQL Server based on context, but not explicitly confirmed in documentation."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: technology_confirmation
+    suggested_owner: Chris Byrd
+
+  - id: q024
+    question: Is the local SQL Server database for CSI Web on the same server or separate infrastructure?
+    expected_answer: "Unknown"
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: infrastructure
+    suggested_owner: Chris Byrd
+
+  - id: q025
+    question: What authentication mechanism does CSI Web currently use?
+    expected_answer: "Unknown — could be Active Directory, OAuth, or SAML, but not documented."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: security
+    suggested_owner: Chris Byrd
+
+  - id: q026
+    question: What is the technical stack for DG (Digital Gateway)?
+    expected_answer: "Unknown — could be SQL Server, Oracle, or API-based, but not documented."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: technology_confirmation
+    suggested_owner: Bill Cadman
+
+  - id: q027
+    question: How does the enrollment process currently write to DG?
+    expected_answer: "Unknown — could use API, file transfer, or direct database calls, but not documented."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: integration_details
+    suggested_owner: Bill Cadman
+
+  - id: q028
+    question: What is IPP's hosting environment?
+    expected_answer: "Unknown — documented as likely Cloud (GCP or Azure), but not confirmed."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: infrastructure
+    suggested_owner: IPP Team
+
+  - id: q029
+    question: What is the authentication method for IPP APIs?
+    expected_answer: "Unknown — expected to be OAuth 2.0 Client Credentials flow with mTLS, but not confirmed with IPP team."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: security
+    suggested_owner: IPP Team
+
+  - id: q030
+    question: What is the expected SLA for IPP API response time?
+    expected_answer: "Unknown"
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: performance_requirements
+    suggested_owner: IPP Team
+
+  - id: q031
+    question: What is the migration path and timeline from DataVision/EDP to IPP?
+    expected_answer: "Unknown — Day 2 calls for sunsetting DataVision/EDP, but specific cutover strategy, validation rules, and data migration approach are not documented."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: migration_strategy
+    suggested_owner: Muhammad Mudassar
+
+  - id: q032
+    question: What is the Meritain team's contact for IPP integration support?
+    expected_answer: "Unknown"
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: contact_info
+    suggested_owner: Muhammad Mudassar
+
+  - id: q033
+    question: What exactly is the 'Universe database' mentioned in the IMI Integration Q&A?
+    expected_answer: "Unknown — mentioned as a system interaction point but not defined in architecture docs."
+    source_artifact: Meritain_IMI_Integration_Q&A.md
+    known_answer: false
+    gap_type: system_definition
+    suggested_owner: TBD
+
+  - id: q034
+    question: What is the relationship between IMI and IID (Individual Identifier)?
+    expected_answer: "Unknown — both mentioned in context of proxy ID resolution but not clearly defined."
+    source_artifact: Estimate_Impact_Summary.md
+    known_answer: false
+    gap_type: concept_definition
+    suggested_owner: TBD
+
+  - id: q035
+    question: Are there any existing implementations of MaCE messaging platform at Meritain?
+    expected_answer: "Unknown — referenced as the orchestration platform for RCS/SMS/Email, but readiness status and prior integrations not documented."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: vendor_readiness
+    suggested_owner: MaCE Team
+
+  - id: q036
+    question: What is the TCPA compliance framework that governs SMS/RCS communications from Meritain?
+    expected_answer: "Unknown — TCPA mentioned as constraint, but specific rules, opt-out handling, and audit requirements not detailed."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: compliance_requirements
+    suggested_owner: Legal/Compliance
+
+  - id: q037
+    question: How are consent records audited and maintained for regulatory compliance?
+    expected_answer: "Unknown — ConsentAuditLog table is proposed but audit procedures, retention policies, and reporting requirements not defined."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: audit_process
+    suggested_owner: Compliance/DG Team
+
+  - id: q038
+    question: What is the process for handling Reassigned Number Database (RND) entries in the Meritain context?
+    expected_answer: "Unknown — RND mentioned as an IPP capability (Q005), but Meritain-specific process not detailed."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: process_definition
+    suggested_owner: IPP Team
+
+  - id: q039
+    question: How is the Meritain integration prioritized relative to other IPP onboarding initiatives?
+    expected_answer: "Unknown"
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: roadmap_context
+    suggested_owner: IPP Team
+
+  - id: q040
+    question: What are the data validation rules for member phone numbers and email addresses in the preference system?
+    expected_answer: "Unknown — format validation, uniqueness constraints, and duplicate handling not specified."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: data_validation
+    suggested_owner: Chris Byrd
+
+  - id: q041
+    question: How is the member enrollment workflow integrated with the preference capture process?
+    expected_answer: "Unknown — timing, sequencing, and error handling for preference collection during enrollment not documented."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: workflow_integration
+    suggested_owner: TBD
+
+  - id: q042
+    question: What is the EOB (Explanation of Benefits) delivery strategy and how does it interact with communication preferences?
+    expected_answer: "Unknown — EOBPreference field in schema, but interaction with RCS/SMS/Email strategy not detailed."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: business_process
+    suggested_owner: DG Team
+
+  - id: q043
+    question: Are there dependencies between the Meritain RCS initiative and other enterprise initiatives (e.g., IPP rollout, MaCE platform maturation)?
+    expected_answer: "Unknown — critical path items and gating dependencies not documented."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: dependency_mapping
+    suggested_owner: Muhammad Mudassar
+
+  - id: q044
+    question: What are the performance characteristics of Infobip RCS delivery vs CSG SMS vs Salesforce Email for the Meritain use case?
+    expected_answer: "Unknown — delivery latency, success rates, and cost trade-offs not documented."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: vendor_comparison
+    suggested_owner: MaCE Team
+
+  - id: q045
+    question: How will the system handle members with invalid or missing contact information?
+    expected_answer: "Unknown — fallback logic, retry strategy, and audit trail for failed delivery not specified."
+    source_artifact: Meritain_RCS_Solution_Architecture.md
+    known_answer: false
+    gap_type: error_handling
+    suggested_owner: Chris Byrd
+
+metadata:
+  total_questions: 45
+  known_answers: 18
+  unknown_answers: 27
+  creation_date: 2026-07-11
+  status: draft
+  coverage_areas:
+    - Meritain RCS Initiative (10 questions)
+    - IMI Integration Complexity (8 questions)
+    - System Architecture & Components (12 questions)
+    - Unknown Gaps (15 questions)

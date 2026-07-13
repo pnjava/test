@@ -1,0 +1,176 @@
+---
+# Artifact Manifest Schema
+# Purpose: Inventory and metadata for all raw artifacts ingested into EAIP KB
+# Format: YAML with validation rules defined below
+
+schema_version: "1.0"
+description: "Manifest for artifact tracking and intake workflow"
+
+# SCHEMA DEFINITION:
+# Each artifact entry follows this structure:
+# - filename: (string) original filename of artifact
+#   source: (string) where it came from (email, shared drive, wiki, etc.)
+#   date: (YYYY-MM-DD) when the artifact was created/received
+#   state: (enum: current|historical|proposed|unknown) lifecycle status
+#   owner: (string) who is responsible for this artifact
+#   category: (enum: architecture|process|data|communication|decision) content category
+#   confidence: (enum: verified|inferred|assumed) human confidence in extracted content
+#   notes: (string, optional) any caveats, deprecation warnings, or context
+#   extracted_to: (string, optional) path in knowledge/markdown if processed
+#   scan_result: (enum: clean|quarantined|pending) PHI/PII scan result
+#   tags: (list, optional) searchable keywords
+
+artifacts:
+  - filename: "Estimate_Impact_Summary.md"
+    source: "internal_documentation"
+    date: "2026-03-19"
+    state: "current"
+    owner: "Narendra"
+    category: "decision"
+    confidence: "verified"
+    notes: "Executive summary of Meritain-IMI integration complexity analysis. Foundation for resource planning."
+    extracted_to: "knowledge/markdown/estimate_impact_summary.md"
+    scan_result: "clean"
+    tags:
+      - "meritain"
+      - "imi"
+      - "estimation"
+      - "effort_multiplier"
+
+  - filename: "Meritain_RCS_Solution_Architecture.md"
+    source: "internal_documentation"
+    date: "2026-03-26"
+    state: "current"
+    owner: "Narendra"
+    category: "architecture"
+    confidence: "verified"
+    notes: "Detailed solution architecture for Meritain RCS Day 1 (DataVision) and Day 2 (IPP). Status: DRAFT - requires validation with Chris Byrd, IPP Team, DG Team."
+    extracted_to: "knowledge/markdown/meritain_rcs_solution_architecture.md"
+    scan_result: "clean"
+    tags:
+      - "meritain"
+      - "rcs"
+      - "architecture"
+      - "day1"
+      - "day2"
+      - "ipp"
+      - "datavision"
+
+  - filename: "Meritain_IMI_Implementation_Paths.md"
+    source: "internal_documentation"
+    date: "2026-03-19"
+    state: "current"
+    owner: "TBD"
+    category: "process"
+    confidence: "inferred"
+    notes: "Implementation path options for IMI integration. May contain incomplete analysis."
+    extracted_to: "knowledge/markdown/meritain_imi_implementation_paths.md"
+    scan_result: "clean"
+    tags:
+      - "meritain"
+      - "imi"
+      - "implementation"
+
+  - filename: "Meritain_IMI_Integration_Q&A.md"
+    source: "internal_documentation"
+    date: "2026-03-19"
+    state: "current"
+    owner: "TBD"
+    category: "process"
+    confidence: "inferred"
+    notes: "Q&A document clarifying IMI integration concepts."
+    extracted_to: "knowledge/markdown/meritain_imi_integration_q_a.md"
+    scan_result: "clean"
+    tags:
+      - "meritain"
+      - "imi"
+      - "faq"
+
+  - filename: "Meritain_RCS_Roadmap_final v2.1.pptx"
+    source: "presentation"
+    date: "2026-03-26"
+    state: "current"
+    owner: "Muhammad Mudassar"
+    category: "architecture"
+    confidence: "verified"
+    notes: "PowerPoint presentation, 11 slides. Fully vision-extracted 2026-07-12 (soffice-rendered, locked prompt v1.0); pending human review (T1.4). Slide 11 conceptual design fully transcribed incl. sticky notes by Muhammad Muddassar Ali. New unknowns surfaced: ECS acronym, 'three phases' vs Day 1/2, Mobile App in Day 2 deps."
+    extracted_to: "knowledge/markdown/meritain_rcs_roadmap_final_v2_1.md"
+    scan_result: "clean"
+    tags:
+      - "meritain"
+      - "rcs"
+      - "roadmap"
+      - "presentation"
+
+  - filename: "ITPR078770 - Meritain 2025 PDC Exit Migration - Eligibility.png"
+    source: "email_attachment"
+    date: "2026-03-27"
+    state: "current"
+    owner: "TBD"
+    category: "architecture"
+    confidence: "inferred"
+    notes: "Diagram of eligibility data flows in/out of DG (Membership Info). Vision-extracted 2026-07-12 with locked prompt v1.0; pending human review (T1.4). Introduces unexpanded acronym MEA."
+    extracted_to: "knowledge/markdown/pdc_exit_eligibility_diagram.md"
+    scan_result: "clean"
+    tags:
+      - "meritain"
+      - "pdc"
+      - "eligibility"
+      - "diagram"
+
+  - filename: "ITPR078770 - Meritain 2025 PDC Exit Migration - Enrolment.png"
+    source: "email_attachment"
+    date: "2026-03-27"
+    state: "current"
+    owner: "TBD"
+    category: "process"
+    confidence: "inferred"
+    notes: "Enrollment batch-file flow into DG (834/Custom/Meritain Standard via Axway, BizTalk for X12). Vision-extracted 2026-07-12 with locked prompt v1.0; pending human review (T1.4). Contains SME narrative from 'Bob' (surname unknown): BizTalk frozen since 2020, Sterling+ITX/ITXA for new translation, MALF framework."
+    extracted_to: "knowledge/markdown/pdc_exit_enrollment_diagram.md"
+    scan_result: "clean"
+    tags:
+      - "meritain"
+      - "pdc"
+      - "enrollment"
+      - "diagram"
+
+  - filename: "ITPR078770 - Meritain 2025 PDC Exit Migration - Meritain E2E Arch.png"
+    source: "email_attachment"
+    date: "2026-03-27"
+    state: "current"
+    owner: "TBD"
+    category: "architecture"
+    confidence: "inferred"
+    notes: "Full Meritain E2E architecture: DG (UniVerse/Pick TPA backbone) + WebDE, integrations, 15 operational facts. Vision-extracted 2026-07-12 with locked prompt v1.0; pending human review (T1.4). Highest-value artifact — answers multiple golden-set gaps."
+    extracted_to: "knowledge/markdown/pdc_exit_e2e_arch.md"
+    scan_result: "clean"
+    tags:
+      - "meritain"
+      - "pdc"
+      - "architecture"
+      - "e2e"
+      - "diagram"
+
+  - filename: "emails.txt"
+    source: "email_export"
+    date: "2026-03-27"
+    state: "current"
+    owner: "TBD"
+    category: "communication"
+    confidence: "inferred"
+    notes: "Email thread export (IPP Intake for Meritain thread). Scanned 2026-07-12: only corporate emails found (aetna.com/cvshealth.com/meritain.com), no member PHI. Non-standard encoding (extended-ASCII, CRLF+NEL) — handle with errors='replace' during extraction."
+    extracted_to: "knowledge/markdown/emails.md"
+    scan_result: "clean"
+    tags:
+      - "communication"
+      - "ipp"
+      - "meritain"
+
+metadata:
+  manifest_created: "2026-07-11"
+  manifest_version: "1.0"
+  total_artifacts: 9
+  clean_artifacts: 9
+  pending_artifacts: 0
+  quarantined_artifacts: 0
+  next_action: "T1.4 human review of the 4 vision extractions (3 PDC diagrams + RCS Roadmap deck); then Milestone 2 (T2.1 alias registry)"

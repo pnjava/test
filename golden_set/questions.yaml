@@ -1,0 +1,148 @@
+# Golden Question Set v3 (master build) — 20 questions
+# Regression gate: run pytest tests/test_golden.py after EVERY KB or prompt change.
+#
+# Schema:
+#   id / type / question           type: answerable | decision | unknown | robustness
+#   expected_mentions              ALL must appear (case-insensitive substrings)
+#   expected_any_mentions          at least ONE must appear (optional)
+#   forbidden_mentions             NONE may appear (optional)
+#   expected_cite_docs_any         >=1 citation from these doc ids (answerable/decision)
+#   expected_retrieve_docs_any     >=1 RETRIEVED chunk from these docs (robustness)
+#   must_pass_unchanged            query_fix must not alter this query (robustness control)
+#   expected_answer: unknown       for must-say-unknown questions
+
+version: 3
+created: "2026-07-13"
+
+questions:
+  # ---------- (a) 10 answerable ----------
+  - id: g01
+    type: answerable
+    question: "What is DG?"
+    expected_mentions: ["UniVerse", "Pick"]
+    expected_any_mentions: ["AIX", "P9-PI80", "TPA", "Data General"]
+    expected_cite_docs_any: ["06-dg-current-state-landscape", "00-stitched-architecture-overview"]
+
+  - id: g02
+    type: answerable
+    question: "What is DataVision?"
+    expected_mentions: ["DB2", "Tidal"]
+    expected_any_mentions: ["DataStage", "Tableau"]
+    expected_cite_docs_any: ["09-datavision-analytics"]
+
+  - id: g03
+    type: answerable
+    question: "How much repricing goes to BAMR?"
+    expected_mentions: ["80"]
+    expected_any_mentions: ["90"]
+    expected_cite_docs_any: ["10-bamr-repricer", "06-dg-current-state-landscape"]
+
+  - id: g04
+    type: answerable
+    question: "What is WebDE?"
+    expected_mentions: ["DG"]
+    expected_any_mentions: ["RedBack", "service layer", "MVIS", "UniVerse"]
+    expected_cite_docs_any: ["11-webde"]
+
+  - id: g05
+    type: answerable
+    question: "How are ID cards printed?"
+    expected_mentions: ["Zelis", "Axway"]
+    expected_cite_docs_any: ["20-idcard-printing"]
+
+  - id: g06
+    type: answerable
+    question: "What runs the nightly payment process?"
+    expected_mentions: ["DRAFTS"]
+    expected_any_mentions: ["Benton", "night", "end of day"]
+    expected_cite_docs_any: ["23-drafts-process", "22-benton-queues"]
+
+  - id: g07
+    type: answerable
+    question: "Who are the Plan Build business resources?"
+    expected_mentions: ["Lynn Fletcher", "Terrie Nicks"]
+    expected_cite_docs_any: ["05-plan-build-process"]
+
+  - id: g08
+    type: answerable
+    question: "What are the 5 CDC non-negotiables?"
+    expected_mentions: ["application-level", "Kafka", "immutable", "idempoten"]
+    expected_any_mentions: ["projection", "source of truth"]
+    expected_cite_docs_any: ["03-cdc-transactional-outbox-reference"]
+
+  - id: g09
+    type: answerable
+    question: "What is the North Star principle for DG access?"
+    expected_mentions: ["data platform"]
+    expected_any_mentions: ["directly", "no one"]
+    expected_cite_docs_any: ["02-north-star-target-architecture", "register-dg-direct-access", "00-stitched-architecture-overview"]
+
+  - id: g10
+    type: answerable
+    question: "Is MCI the same as MICS?"
+    expected_mentions: ["MCI", "MICS"]
+    expected_any_mentions: ["different", "not the same", "distinct", "separate", "two", "whereas", "while", "vs", "no direct"]
+    expected_cite_docs_any: ["12-mci-legasuite", "07-transaction-cache-commercial", "watchlist-acronyms"]
+
+  # ---------- (b) 3 decision-status ----------
+  - id: g11
+    type: decision
+    question: "Which CDC approach was selected?"
+    expected_mentions: ["open", "RDRS", "Outbox"]
+    expected_cite_docs_any: ["01-cdc-options-and-gcp-connectivity", "03-cdc-transactional-outbox-reference", "register-cdc-pattern"]
+
+  - id: g12
+    type: decision
+    question: "Is Five9 confirmed?"
+    expected_mentions: ["selected"]
+    expected_any_mentions: ["Five9", "Avaya"]
+    expected_cite_docs_any: ["register-avaya-five9", "19-contact-center-ivr", "06-dg-current-state-landscape"]
+
+  - id: g13
+    type: decision
+    question: "Is NextGen reuse confirmed?"
+    expected_mentions: ["open"]
+    expected_any_mentions: ["NextGen", "confirmed with NextGen"]
+    expected_cite_docs_any: ["register-nextgen-reuse", "02-north-star-target-architecture"]
+
+  # ---------- (c) 2 must-say-unknown ----------
+  - id: g14
+    type: unknown
+    question: "What is DG's backup retention policy?"
+    expected_answer: unknown
+
+  - id: g15
+    type: unknown
+    question: "How many Universe licenses does Meritain own?"
+    expected_answer: unknown
+
+  # ---------- (d) 5 typo/voice robustness ----------
+  - id: g16
+    type: robustness
+    question: "can you tele me teh systems DG interctas with?"
+    expected_mentions: ["WebDE", "Zelis", "BAMR", "Axway", "ECHO", "ClaimsXten"]
+    forbidden_mentions: ["Not in knowledge base", "ERP", "CRM"]
+    expected_retrieve_docs_any: ["06-dg-current-state-landscape", "00-stitched-architecture-overview"]
+    notes: "Enumeration question (R2): aggregate across all retrieved chunks."
+
+  - id: g17
+    type: robustness
+    question: "DG vizualisation"
+    expected_retrieve_docs_any: ["09-datavision-analytics"]
+
+  - id: g18
+    type: robustness
+    question: "wat is BAMER"
+    expected_retrieve_docs_any: ["10-bamr-repricer"]
+
+  - id: g19
+    type: robustness
+    question: "data vison tablo reports"
+    expected_retrieve_docs_any: ["09-datavision-analytics"]
+
+  - id: g20
+    type: robustness
+    question: "What is DataVision?"
+    must_pass_unchanged: true
+    expected_retrieve_docs_any: ["09-datavision-analytics"]
+    notes: "Clean control — query_fix must not alter it."

@@ -1,0 +1,9 @@
+<ac:structured-macro ac:name="warning"><ac:rich-text-body><p><strong>PROPOSED</strong> — target architecture, not implemented.</p></ac:rich-text-body></ac:structured-macro>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-04.png"/></ac:image>
+<h1>Claims Domain Data Model</h1>
+<h2>Entities (fields verbatim)</h2>
+<ul><li>MEMBER: PK MemberID, DepNo, FirstName, LastName</li><li>CLAIM: PK ClaimNumber; ClaimType, ClaimStatusCode, ClaimStatusDescription; FK MemberID, DepNo, GroupID, DivisionCode, ProviderID; ServiceFromDate, ServiceToDate, ReceiveDate, PaidDate; TotalIncurred, PaidAmount, PatientResponsibility, AllowedAmount, BilledCharges</li><li>SERVICE_LINE: FK ClaimNumber; LineNumber, ServiceCode, ServiceCodeType, Modifier, PlaceOfService, BilledAmount, AllowedAmount, PaidAmount, PatientResponsibility, DiagnosisCodes[]</li><li>GROUP_INFO: PK GroupID, DivisionCode</li><li>PROVIDER: PK ProviderID, ProviderName, TIN, PayeeName, Address1/2, City, State, Zip</li><li>CLAIM_TRACKING: TrackingEventID; FK ClaimNumber; EventType, EventDate, User, Notes, VendorName, VendorSentDate, VendorReturnedDate, VendorProcessedDate</li><li>CLAIM_DOCUMENT: DocumentID; FK ClaimNumber; DocumentType, FileName, CreatedDate, DeliveryMethod, Source, ContentLocation</li></ul>
+<h2>Inferred</h2>
+<ul><li>This is the normalized target schema for the claims read model (Transactional Cache), not the native DG MultiValue file structure</li></ul>
+<h2>Unclear</h2>
+<ul><li>Mapping from DG files (e.g. BHIST, HSTRACKING) to these entities</li><li>Whether this is approved or draft</li></ul>

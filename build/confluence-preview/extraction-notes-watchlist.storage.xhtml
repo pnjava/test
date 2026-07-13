@@ -1,0 +1,29 @@
+<ac:structured-macro ac:name="info"><ac:rich-text-body><p>state: governance · confidence: verified · source: extraction-notes.md</p></ac:rich-text-body></ac:structured-macro>
+
+<h1>Extraction Notes — OCR Corrections &amp; Low-Confidence Readings</h1>
+<h2>Corrections applied silently during extraction (originals preserved here for audit)</h2>
+<table><tbody>
+<tr><th>As extracted (raw)</th><th>Corrected to</th><th>Confidence</th></tr>
+<tr><td><code>Publinsh Plan Events</code></td><td>Publish Plan Events</td><td>high</td></tr>
+<tr><td><code>Thisdiagram</code>, <code>presisted</code>, <code>Indempotent</code>, <code>basatards-CDC</code></td><td>this diagram, persisted, Idempotent, (garbled — read as "application-level CDC")</td><td>high; <code>basatards</code> unrecoverable, meaning inferred from duplicate page</td></tr>
+<tr><td><code>?</code> between components (e.g. <code>MVDB ? Kafka ? Mongo</code>)</td><td>→ (flow arrows)</td><td>high (consistent pattern)</td></tr>
+<tr><td><code>AIXMVDB? CDCLayer ? Replication DB? Kafka</code></td><td>AIX MVDB → CDC Layer → Replication DB → Kafka</td><td>high</td></tr>
+<tr><td><code>Aeta Employeer Portal</code></td><td>Aetna Employer Portal (AEP)</td><td>high</td></tr>
+<tr><td><code>External Partnors</code>, <code>backnone</code>, <code>Enollment</code>, <code>HIPPA</code>, <code>Proprietry</code>, <code>Descision</code>, <code>remittence</code>, <code>Managment</code>, <code>Experiance</code></td><td>Partners, backbone, Enrollment, HIPAA, Proprietary, Decision, remittance, Management, Experience</td><td>high</td></tr>
+<tr><td><code>RTMEI (Rename)</code></td><td>kept verbatim — appears to be a component pending rename</td><td>low — SME confirm</td></tr>
+<tr><td><code>MVX:Performance</code></td><td>kept verbatim (Rocket MV product name)</td><td>medium</td></tr>
+<tr><td><code>OCRBATEN</code> (Benton diagram)</td><td>possibly OCRBATCH</td><td>low — flagged, kept raw</td></tr>
+<tr><td><code>BACKGROO,1,1</code>, <code>BACKCLAIM11 / BACKCLAIM 1 / BACKCLAIM1,n</code></td><td>queue-name variants, exact spelling uncertain from raster</td><td>low — SME confirm queue names</td></tr>
+</tbody></table>
+<h2>Acronym collision watchlist (one-character-apart systems — DO NOT merge)</h2>
+<table><tbody>
+<tr><th>Term</th><th>What it is</th><th>Evidence</th></tr>
+<tr><td><strong>MCI</strong></td><td>Meritain Claims Interface — claims UI on Tomcat via LegaSuite (Meritain side)</td><td>page 14</td></tr>
+<tr><td><strong>MICS</strong></td><td>Member ID Card System — Aetna-side GKE app subscribing to plan/member events</td><td>pages 2/8/9</td></tr>
+<tr><td><strong>MCMM</strong></td><td>Unknown — appears in systems-of-engagement cluster near MeritainConnect</td><td>page 19; SME Q9</td></tr>
+<tr><td><strong>1mage</strong></td><td>Imaging product (digit one + "mage") — NOT a typo for "Image"</td><td>pages 19, 31</td></tr>
+<tr><td><strong>MEA</strong> vs <strong>MER</strong></td><td>MEA/ODS is Aetna member system of record; do not conflate with Meritain ODS (SQL Server)</td><td>pages 2/8/9 vs 19</td></tr>
+<tr><td><strong>CSC</strong> vs <strong>CSI Web</strong></td><td>CSC unknown (near DocStore/Claim Docs); CSI Web = CSR frontend</td><td>page 19; SME Q9</td></tr>
+</tbody></table>
+<h2>Directionality caveats (spatial info not fully recoverable from raster)</h2>
+<ul><li>Page 19 landscape: edges recorded with direction ONLY where the label states it (e.g. "I:837 claims O:999"); unlabeled edges recorded as connections without confirmed direction.</li><li>Page 2 canvases were manually segmented into regions before extraction: [current landscape]-&gt;doc 06, [North Star]-&gt;doc 02, [Transaction Cache]-&gt;doc 07, [CDC insets]-&gt;docs 01/03. Region assignment confidence: high.</li><li>Page 4 ERD: crow's-foot cardinality symbols not recoverable from text layer. FK columns captured verbatim; cardinality/optionality/composite keys UNKNOWN — see SME questions 25–29.</li></ul>

@@ -1,0 +1,58 @@
+# Canonical name registry — confirmed aliases from this PDF set
+# status: confirmed = stated in artifacts; pending = needs SME confirmation
+aliases:
+  - canonical: DG
+    aka: [Data General, "DG MVDB", "UniVerse MV DBMS", "Rocket UniVerse", "TPA Admin backbone system", MVDB]
+    status: confirmed
+    note: "DG is UniVerse DB and Pick programming language (page 19, fact 12); 'Data General' label on pages 22, 25, 26"
+  - canonical: DataVision
+    aka: [Data Vision, DataHub ODS, "Meritain DataHUB ODS"]
+    status: confirmed
+    note: "a.k.a DataVision per page 19 legend; IBM DB2, Tidal ETL, Python, DataStage"
+  - canonical: BAMR
+    aka: [Business Alliances Manual Repricer, "CVTY/Wholesale repricer"]
+    status: confirmed
+  - canonical: WebDE
+    aka: [RedBack, "Web DE", "DG service layer"]
+    status: confirmed
+    note: "WebDE = RedBack Object Server + Java Scheduler + RedBeans/RedPages.NET + Web Designer"
+  - canonical: MCI
+    aka: [Meritain Claims Interface, "Claims UI App"]
+    status: confirmed
+  - canonical: LegaSuite
+    aka: [Rocket Modern Experience, ScreenScraper tool]
+    status: confirmed
+  - canonical: ClaimsXten
+    aka: [Lyric, Intelliclaim, "Claim XTEN", "Claim Edit vendor"]
+    status: confirmed
+  - canonical: Meritain Transactional Cache
+    aka: [MongoDB Transactional Cache, "Meritain MongoDB Transactional Cache", "Data HUB/Transactional Cache"]
+    status: confirmed
+  - canonical: SmartComm
+    aka: [SmartCOMM, SmartComms]
+    status: confirmed
+  - canonical: Edify
+    aka: [IVR App, IVRS, "IVR (Edify)"]
+    status: confirmed
+  - canonical: MVIS
+    aka: [MultiValueIS, "MultiValue IS"]
+    status: pending
+    note: "WebDE replacement — confirm product naming"
+  - canonical: MEA/ODS
+    aka: []
+    status: pending
+    note: "Aetna-side member system of record (DB2) — expand acronym"
+  - canonical: PSBoR/PBoR
+    aka: []
+    status: pending
+    note: "Plan/Product Book of Record (DB2) — confirm expansion"
+  - canonical: MCMM
+    aka: []
+    status: pending
+  - canonical: MWHCSS
+    aka: []
+    status: pending
+  - canonical: CSC
+    aka: []
+    status: pending
+    note: "appears near DocStore/Claim Docs — confirm meaning"

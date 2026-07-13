@@ -1,0 +1,18 @@
+<ac:structured-macro ac:name="warning"><ac:rich-text-body><p><strong>PROPOSED</strong> — target architecture, not implemented.</p></ac:rich-text-body></ac:structured-macro>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-03.png"/></ac:image>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-07.png"/></ac:image>
+<h1>DG MVDB → Kafka → MongoDB: Transactional Outbox Reference Architecture (Proposed)</h1>
+<h2>Non-negotiable principles (verbatim)</h2>
+<p>1. CDC must be application-level (MVDB has no usable redo/WAL logs)</p>
+<p>2. Kafka is the system of record for change events, not MongoDB</p>
+<p>3. Events are immutable (replayable)</p>
+<p>4. MongoDB is a projection, not the source of truth</p>
+<p>5. Idempotency is mandatory (events will replay)</p>
+<h2>Design</h2>
+<ul><li>All writes wrapped in UniBASIC WRITE/DELETE wrappers (Option A, preferred) or UniVerse file triggers (Option B)</li><li>CDC handler (CDC.ON.CHANGE + file-specific handlers e.g. CDC.HANDLER.CUSTOMERS) writes one OUTBOX record atomically inside the same MV transaction</li><li>OUTBOX record: EVENT_ID, ENTITY, OPERATION (CREATE/UPDATE/DELETE), ENTITY_KEY, SEQUENCE, PAYLOAD (JSON), STATUS (NEW/SENT/ERROR), CREATED_TS</li><li>Background publisher (phantom job / service / Kafka Connect) polls OUTBOX WHERE STATUS=NEW → publishes to Kafka → marks SENT; retries safe, idempotent</li><li>Kafka topic per entity (e.g. mvdb.customer.events), keyed Customer:&lt;CUST_ID&gt;</li><li>MongoDB consumers upsert (idempotent projection); full rebuild via offset reset &amp; replay</li><li>Avro preferred over JSON for schema enforcement once multiple consumers exist</li><li>UniBASIC used ONLY for: write interception, event creation, outbox persistence</li></ul>
+<h2>Implementation order</h2>
+<p>OUTBOX file → CDC handlers → wrappers/triggers → verify integrity → publisher → Kafka topic → Mongo consumer → prove replay → next entity</p>
+<h2>Complementary pattern</h2>
+<p>Rocket U2 Data Replication = HA/DR (MVDB→MVDB); Outbox CDC = integration/streaming. "Complementary, not interchangeable."</p>
+<h2>Unclear</h2>
+<ul><li>First entity chosen (doc suggests CUSTOMERS/ACCOUNTS as candidates; actual pick unknown)</li><li>Whether this outbox approach or RDRS (page 1) is the final direction — CONTRADICTION with artifact 01</li></ul>

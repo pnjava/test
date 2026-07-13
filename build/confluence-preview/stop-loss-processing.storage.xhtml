@@ -1,0 +1,10 @@
+<ac:structured-macro ac:name="info"><ac:rich-text-body><p>state: current · confidence: verified · source: ITPR078770 PDF, page 18</p></ac:rich-text-body></ac:structured-macro>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-18.png"/></ac:image>
+<h1>Stop Loss Processing</h1>
+<h2>Business context (verbatim summary)</h2>
+<p>Two types of insurance (re-insurance/stop-loss policies) for partially self-funded plans: (1) Specific — very serious/expensive; DG keeps track of expenses (e.g. over $100,000 DG files reimbursement claim with insurer; at half, e.g. $50,000, DG notifies plan sponsor of risk); benefit-plan vs insurance-plan coverage differences tracked in Tracking &amp; Adj; individual or family level; higher-risk members can get reduced coverage ("Lazer/focused Spec"). (2) Aggregate — group-level insurance if group is sicker than average; group size changes over the year affect it; claims arrive at end of plan year; 24-month incurred / 12-month paid variants; lots of variance/complexity.</p>
+<ul><li>Insurance company reimbursement is slow; Meritain can front money to plan sponsor and recover on reimbursement (charged; opt in/out)</li></ul>
+<h2>Components &amp; flows</h2>
+<p>DG (Automated Specific Filings, Manual Specific Filings, Aggregate Filings (manual), Reimbursements Posted, Reporting) → Stop Loss extractor → Axway → carrier-hosted or Meritain-hosted SFTP → Stop Loss Carriers; reimbursement/documentation back; payment to Meritain or group (ACH/check). AdminPC2 = Meritain Windows Server landing zone — PGP encrypt/decrypt, zip/unzip (list to remove/replace). Stop Loss UI: http://stoplossui:81/Home/LogOn. SRP (Standard Reporting Package) available to client via Client Portal on MeritainConnect. Reporting: members reaching limits; expenses vs aggregate coverage.</p>
+<h2>Unclear</h2>
+<ul><li>Stop Loss UI ownership ("Dont know about UI" note on diagram)</li></ul>

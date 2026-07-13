@@ -1,0 +1,4 @@
+<ac:structured-macro ac:name="info"><ac:rich-text-body><p>state: current · confidence: verified · source: ITPR078770 PDF, page 26</p></ac:rich-text-body></ac:structured-macro>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-26.png"/></ac:image>
+<h1>Internal Repricing Engine (within DG)</h1>
+<p>Claim intake layer (EDI 837, portal, fax) → member &amp; provider lookup (eligibility, network) → internal repricing engine core (contract rate lookup, fee schedule mapping, bundling rules engine, modifier adjustments) → allowed amount calc (plan pays vs member pays) → payment &amp; EOB generation (copay, deductible, etc.). Implemented as Re-Pricing UniBASIC Local Service against UniVerse MV DBMS (applyRePricingRules). Note: this is the "some repricing happens within DG box" from the landscape facts; 80–90% goes to BAMR instead.</p>

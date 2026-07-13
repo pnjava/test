@@ -1,0 +1,14 @@
+title: 'DG MVDB → Kafka → MongoDB: Transactional Outbox Reference Architecture (Proposed)'
+group: Target State
+labels:
+- state-proposed
+- confidence-verified-design-doc-not-yet-implemented
+- tag-dg
+- tag-cdc
+- tag-transactional-outbox
+- tag-unibasic
+- tag-kafka
+- tag-mongodb
+attachments:
+- /Users/narendrakumar/eaip/kb/assets/page-03.png
+- /Users/narendrakumar/eaip/kb/assets/page-07.png

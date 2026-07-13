@@ -1,0 +1,62 @@
+---
+id: 06-dg-current-state-landscape
+source: ITPR078770 PDF, page 19 (also embedded in pages 2, 8, 9)
+state: current
+confidence: verified (most detailed current-state artifact in the set)
+tags: [DG, integration landscape, EDI, claims, eligibility, enrollment, vendors]
+---
+# DG Current-State Integration Landscape (the "big diagram")
+
+## Core: DG
+TPA admin backbone system. UniVerse DB, Pick/UniBASIC programming. Key internal processes: Claim Adjudication, Enrollment Processing, Eligibility Processing, ID Card Printing, Draft Processing (End of Day), DG Loader, DG Extracter, WebDE service layer.
+
+## Hard facts (verbatim notes 1–15)
+1. 7 queues to process claims
+2. Realtime eligibility requests: 2 million per day
+3. Realtime claim status calls: 10k per day
+4. 50% EDI27X calls from Aetna, 50% from ChangeHealthCare
+5. WebDE is service layer on DG box, written in same technology (Universe)
+6. Prod DG: singular AIX P9-PI80, 54 CPUs (44 dedicated to Prod)
+7. Non-Prod DG on same box with 3 CPUs (plan to move to other box)
+8. DR: Nevada data center, smaller size (AIX P9-PI50)
+9. Some repricing happens within DG box
+10. Avaya planned to be replaced with Five9
+11. 80–90% of transactions rePriced on BAMR
+12. DG is UniVerse DB and Pick programming language
+13. Current DC: Phoenix AZ (planned migration to Las Vegas)
+14. Draft Process (end-of-day) runs 5 days/week, takes 11–17 hrs starting midnight
+15. Data Vision reporting via Tableau
+
+## Volumes
+Current membership ~2M; Advocate Health expected +250K; future potential 4M. Clinical platform: American Health iSuite Medical Management.
+
+## Integration engine layer
+EDI27X, AXway (managed file transfer), Biztalk-1 (translation; X12 only, no new dev since 2020), Stop Loss extractor, Benton job scheduler, LegaSuite screen-scraper (MCI), DG Loader/Extracter, Kofax (correspondence intake), WorkIT, DMWiz
+
+## External partners & flows (selected)
+- ChangeHealthCare, Availity, clearinghouses: 837 claims in / 999 ACK out (daily; hourly for Availity); 270/271 & 276/277 real-time (20-sec response SLA)
+- BankTEC: paper claims → 837 + image (OCR); future plan to bypass BankTec to improve SLA to 24 hrs
+- CMS: HIPAA eligibility, COB claims, Medicare crossover (COBA)
+- PBMs: RX claims, eligibility/accumulators
+- Medical management vendors incl. AHH; Navigation partners (Quantum, Accolade)
+- Reinsurance carriers: stop loss filing
+- US Bank: COBRA & retiree cost share, bank pay info (US Bank stores member credit card data — PCI)
+- ECHO: payment file; Zelis: EOB/check print, ID cards, paper checks info; 1mage: archive/image data
+- Wex Health: HSA data/extracts; HealthSparq: cost estimator batch feed
+- Subrogation vendors (PHIA): claim data
+- Lyric (ClaimsXten)/claim edit vendor: claim feed for edits, 837 response
+- Aetna: EDI27X (50%), APIC real-time calls, redirect 270/276→271/277
+- CVTY/Wholesale: BAMR repricing (real-time call from DG; MCPS sunset)
+
+## Systems of engagement
+MeritainConnect (member portal), MCMM, HealthyMerits portal, provider/broker/plan-sponsor/audit portals, IVR (Edify), CSI Web (CSR frontend), QuickClicks, MHAT, MH SalesForce, StopLoss web interface, MCI, DocStore, Right Fax, SmartComm (AWS), 1mage
+
+## Analytics & reporting
+Meritain Enterprise Data Warehouse, Legacy ODS (SQL Server), DataHUB ODS a.k.a DataVision (IBM DB2; Tidal ETL, Python, DataStage) → Tableau
+
+## Financial
+Sage 300 (AccPac) — AR/AP; check registers from Draft process upload to AccPac
+
+## Unclear
+- MCMM, MWHCSS, CSC, IMI/Individualize exact roles
+- WorkIT and DMWiz functions

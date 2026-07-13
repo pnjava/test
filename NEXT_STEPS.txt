@@ -1,0 +1,67 @@
+═══════════════════════════════════════════════════════════════════════════════
+  EAIP MVP — MILESTONE 0 COMPLETE ✅
+  Next: Start Milestone 1 (Safe Ingestion)
+═══════════════════════════════════════════════════════════════════════════════
+
+MILESTONE 0 STATUS
+─────────────────────────────────────────────────────────────────────────────
+✅ T0.1 — Project Skeleton
+   └─ Folder structure created, requirements.txt validated
+✅ T0.2 — Golden Question Set  
+   └─ 45 questions (18 known, 27 unknown) in golden_set/questions.yaml
+✅ T0.3 — Artifact Manifest
+   └─ manifest.yaml defined, validator passes (52-line Python script)
+
+NEXT TASK: Milestone 1 — Task T1.1 (PHI/PII Scanner)
+─────────────────────────────────────────────────────────────────────────────
+
+ACCEPTANCE CRITERIA FOR T1.1:
+  1. Script: scan text for SSN (XXX-XX-XXXX), member IDs, DOB+name, emails
+  2. Move hits → knowledge/quarantine/ with reason log
+  3. Test: 5 seeded PHI patterns → all 5 caught ✓
+  4. Test: clean file passes without false positives ✓
+
+FILES TO SCAN:
+  Pending (4 files):
+    • Meritain_RCS_Roadmap_final v2.1.pptx (needs text extraction first)
+    • ITPR078770 - Meritain 2025 PDC Exit Migration - Eligibility.png
+    • ITPR078770 - Meritain 2025 PDC Exit Migration - Enrolment.png
+    • ITPR078770 - Meritain 2025 PDC Exit Migration - Meritain E2E Arch.png
+  
+  Quarantined (1 file — requires human review):
+    • emails.txt (52KB — likely contains member/staff email addresses)
+
+RECOMMENDED APPROACH:
+  1. Build PHI/PII scanner with regex patterns for:
+     - SSN: \d{3}-\d{2}-\d{4} or \d{9}
+     - Member ID: format TBD (ask Meritain team for pattern)
+     - DOB+Name: date + name adjacent in text
+     - Email: standard email pattern (but check if member-related)
+  
+  2. Parameterize patterns in YAML config (easy to adjust)
+  
+  3. Create test file with seeded patterns:
+     - 1× fake SSN
+     - 1× fake member ID (if pattern known)
+     - 1× fake DOB+name combo
+     - 2× realistic email addresses
+  
+  4. Test output: log quarantine reason for each hit
+
+IMPLEMENTATION STUB:
+  Location: src/phi_pii_scanner.py
+  Inputs: artifact file path, pattern config (YAML)
+  Outputs: clean_text OR quarantine_reason
+  Error handling: log, don't crash on unreadable files
+
+AFTER T1.1:
+  ✓ Proceed to T1.2 (text extraction)
+  ✓ Your golden questions remain your ground truth
+
+═══════════════════════════════════════════════════════════════════════════════
+For questions or clarifications, refer to:
+  • README.md — full project overview
+  • MILESTONE_0_COMPLETE.md — task acceptance details
+  • golden_set/questions.yaml — your knowledge baseline
+  • project_eaip_context.md (in memory) — Meritain domain context
+═══════════════════════════════════════════════════════════════════════════════

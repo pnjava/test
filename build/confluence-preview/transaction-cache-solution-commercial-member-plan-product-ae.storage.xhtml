@@ -1,0 +1,14 @@
+<ac:structured-macro ac:name="info"><ac:rich-text-body><p>state: current/in-flight (Aetna commercial side; pattern reference for Meritain) · confidence: verified (diagram) · source: ITPR078770 PDF, pages 2, 8, 9 (&quot;Transaction Cache solution – Commercial Member/Plan/Product&quot;)</p></ac:rich-text-body></ac:structured-macro>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-08.png"/></ac:image>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-09.png"/></ac:image>
+<h1>Transaction Cache Solution — Commercial Member/Plan/Product (Aetna side)</h1>
+<h2>Sources</h2>
+<ul><li>MEA/ODS (on-prem, DB2): Commercial Member Data — daily refresh + one-time initial load via EDML GCS bucket / Enterprise Data Movement Framework; Cloud Composer DAG stores member data into GCS; Raw Viewable BigQuery</li><li>PSBoR/PBoR (on-prem, DB2): Commercial Plan/Product data — daily refresh + one-time initial load</li><li>Incremental transaction updates via Confluent Kafka (GCP)</li></ul>
+<h2>Caches &amp; services (GKE)</h2>
+<ul><li>Commercial Member cache — RTMEI (rename); Lucene search function; Apigee X API; member name search microservice</li><li>Commercial Plan/Product cache (probably reuse BRAGS DB); Plan Services microservices; Cloud Pub/Sub publishes Plan Events (change stream) and Member Events</li><li>Consumers: Aetna Employer Portal (AEP BFF, member search), Vendor Eligibility sub-app (eligibility extract generation; subscribes to plan events), MICS Member ID Card system (ID Card Portal, MICS BFF; subscribes to plan events), LGIT/MHP/QTL related sub app</li></ul>
+<h2>Users</h2>
+<p>Aetna super users, plan sponsors, brokers, constituent super users, Aetna UI admin</p>
+<h2>Inferred</h2>
+<ul><li>This is the enterprise pattern the Meritain Transactional Cache is expected to mirror (MongoDB + Kafka + GKE microservices + Apigee)</li></ul>
+<h2>Unclear</h2>
+<ul><li>Whether Meritain will literally reuse these components or only the pattern</li></ul>

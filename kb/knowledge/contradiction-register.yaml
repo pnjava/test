@@ -1,0 +1,93 @@
+decisions:
+- id: CDC-PATTERN
+  topic: CDC approach for DG -> Kafka -> MongoDB
+  status: open
+  options:
+  - name: Rocket Data Replicate & Sync (RDRS)
+    status: recommended
+    evidence: 'Page 1 ratings table: ''***** Best — Enterprise-grade CDC, ideal for AIX->Linux replication'''
+    source:
+    - 01-cdc-options-and-gcp-connectivity
+  - name: Transactional Outbox (application-level, UniBASIC)
+    status: recommended
+    evidence: 'Pages 3/7 full reference architecture: ''[Recommended Pattern: Application-Level Outbox]... most
+      stable, widely adopted MVDB CDC pattern'''
+    source:
+    - 03-cdc-transactional-outbox-reference
+  - name: MVX:Performance replication
+    status: evaluated
+    evidence: 'Page 1: **** Native MV replication layer'
+    source:
+    - 01-cdc-options-and-gcp-connectivity
+  - name: Trigger-based CDC (audit logging)
+    status: evaluated
+    evidence: 'Page 1: *** targeted event capture; pages 3/7: ''risky without Outbox'''
+    source:
+    - 1
+    - 3
+  - name: API-level via MVIS
+    status: evaluated
+    evidence: 'Page 1: ** not CDC, good for app modernization'
+    source:
+    - 1
+  - name: Polling
+    status: rejected
+    evidence: 'Page 1: ''x — Not appropriate for MV scale'''
+    source:
+    - 1
+  reconciliation_hypothesis: Docs note U2 replication (HA/DR) and Outbox CDC (integration) are 'complementary, not
+    interchangeable' — RDRS may be transport/replication while Outbox provides business-semantic events. UNCONFIRMED.
+  sme_question: 1
+- id: KAFKA-HOSTING
+  topic: 'Kafka: Confluent Cloud vs GCP Managed Kafka'
+  status: open
+  notes: Page 1 lists both; pages 2/8/9 diagrams label 'Confluent Kafka (GCP)' — suggests Confluent, unconfirmed
+    as decision
+  sme_question: 5
+- id: ONPREM-GCP-NETWORK
+  topic: 'On-prem -> GCP connectivity: VPN vs PSC vs Interconnect'
+  status: open
+  notes: Page 1 presents all three as options with tradeoffs; PSC endpoints drawn in target diagram (possible lean),
+    no decision stated
+  sme_question: 6
+- id: CLAIMS-TARGET-MODEL
+  topic: 'Page-4 claims data model: approved target vs draft'
+  status: open
+  sme_question: 4
+- id: WEBDE-REPLACEMENT
+  topic: WebDE -> MVIS replacement
+  status: selected (direction) / open (timeline)
+  evidence: 'Page 13: ''To be replaced with MultiValueIS - Rocket Universe'''
+  sme_question: 15
+- id: AVAYA-FIVE9
+  topic: Avaya -> Five9 telephony replacement
+  status: selected
+  evidence: Page 19 fact 10 'Avaya is planned to be replaced with Five9'; page 24 'New Product Five9 - Corporate
+    directive upgrade'
+  sme_question: 16
+- id: BIZTALK-STERLING
+  topic: BizTalk frozen; Sterling ITX/ITXA for all new translation
+  status: selected
+  evidence: 'Page 20 note: ''no new development on BizTalk... decision made back in 2020'' (attributed to Bob)'
+- id: BANKTEC-BYPASS
+  topic: Bypass BankTec layer to reach 24-hr SLA
+  status: open (stated as 'future plan')
+  evidence: 'Page 19: ''Future plan is to bypass BankTec layer to change SLA to 24 hrs'''
+  sme_question: 12
+- id: DG-DIRECT-ACCESS
+  topic: No direct interaction with DG; all via data platform
+  status: selected (North Star principle)
+  evidence: Pages 2/8/9 verbatim principle box
+- id: NEXTGEN-REUSE
+  topic: Reuse NextGen for enrollment processing, correspondence, ID card printing
+  status: open
+  evidence: 'North Star note: ''To be confirmed with NextGen'''
+  sme_question: 19
+- id: ZELIS-MEMBER-SERVICES
+  topic: Zelis for member services (P3)
+  status: open (evaluation stated)
+  sme_question: 21
+- id: SUPERAPP
+  topic: Superapp for Meritain
+  status: open (posed as question in diagram)
+  sme_question: 20

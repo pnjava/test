@@ -1,0 +1,39 @@
+# Meritain EAIP — containerized. Works on Windows (Docker Desktop + WSL2),
+# macOS, and Linux.
+#
+#   docker compose up -d --build                                  # CPU inference
+#   docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d --build   # NVIDIA GPU
+#
+# First start pulls llama3.1:8b (~5 GB) into the ollama volume and builds the
+# vector indexes — allow 10-20 minutes once. Subsequent starts are fast.
+# App: http://localhost:8501
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama_models:/root/.ollama
+    restart: unless-stopped
+
+  eaip:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      OLLAMA_URL: http://ollama:11434
+      OLLAMA_MODEL: llama3.1:8b
+    volumes:
+      # state that must survive restarts / stay user-editable on the host
+      - ./kb:/app/kb                      # knowledge base (SME loop writes the register)
+      - ./answers:/app/answers            # SME answer docs
+      - eaip_index:/app/chroma_db         # vector + QA-bank indexes
+      - ./gaps.yaml:/app/gaps.yaml
+      - ./usage_log.yaml:/app/usage_log.yaml
+      - ./bank_candidates.yaml:/app/bank_candidates.yaml
+    depends_on:
+      - ollama
+    restart: unless-stopped
+
+volumes:
+  ollama_models:
+  eaip_index:

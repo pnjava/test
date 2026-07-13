@@ -1,0 +1,10 @@
+<ac:structured-macro ac:name="info"><ac:rich-text-body><p>state: current (with retirement notes) · confidence: verified · source: ITPR078770 PDF, pages 11 &amp; 15</p></ac:rich-text-body></ac:structured-macro>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-11.png"/></ac:image>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-15.png"/></ac:image>
+<h1>Analytics &amp; Reporting — DataVision / DataHub ODS</h1>
+<h2>Components</h2>
+<ul><li>DG feeds DB2 (in datacenter)</li><li>Enterprise Data Warehouse — flagged "Subject to Retire (need to move data extract logic to DataHub ODS)"</li><li>Legacy Operational Data Store (SQL Server) — flagged "will also go away after EDW"</li><li>Data Vision (DataHub ODS): IBM DB2 with Tidal ETL, Python custom scripts, DataStage; DV Datamarts → Tableau</li><li>Note: "Enterprise may not want to keep with DB2"</li><li>Consumers/feeders: Salesforce, Digital Team (Portals)</li><li>EBI pulls from Analytics &amp; Reporting → GCP Meritain buckets → Zelis (print/mail), 1mage (archive); SmartComm (AWS) → SMS Gateway/Mail server (future; "Future is SmartPath")</li></ul>
+<h2>Inferred</h2>
+<ul><li>DataVision is the current de facto reporting hub and a likely early consumer of the Enterprise Data Platform (BigQuery)</li></ul>
+<h2>Unclear</h2>
+<ul><li>EDW retirement timeline; SmartPath scope</li></ul>

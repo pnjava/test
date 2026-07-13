@@ -1,0 +1,11 @@
+<ac:structured-macro ac:name="info"><ac:rich-text-body><p>state: current · confidence: verified · source: ITPR078770 PDF, page 12</p></ac:rich-text-body></ac:structured-macro>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-12.png"/></ac:image>
+<h1>BAMR — Business Alliances Manual Repricer</h1>
+<h2>What it is</h2>
+<p>BAMR = Business Alliances Manual Repricer. Interacts with the Repricer BoR (Book of Record) and other components to handle pricing logic for claims before they move downstream. 80–90% of DG transactions are rePriced on BAMR.</p>
+<h2>Flow</h2>
+<p>DG sends claim info in a real-time call (in Aetna primary network) → Meritain APIC → BAMR (CVTY/Wholesale) → gets first price → response to DG.</p>
+<h2>Infrastructure</h2>
+<ul><li>Azure OpenShift Cloud (OCP4), Quay containers, US-East-2 primary active; PODs bamr-oci-prod (prodocp-int-lhzhh-worker-eastus21/23)</li><li>Azure Load Balancer 10.59.54.54; user access https://www20.aetna.com/bamr/login.do (CVS users)</li><li>Mainframe touchpoints: REPRICER (RESUBMIT/IND) CICS region PSODCICG, TRAN WC3, PROGRAM PRMPC0200; BAMR/Repricer BoR AE81/AE83 DB3G, PROGRAM S1JN, BAMR DB DWCI1P0AD; EPDB (MF) DB DSP400P0D; stored procedures</li><li>Integration: MQ, WebService (DataPower), SMS, SCSR service (/getServiceCodeDescription), Audit (SSN masking)</li></ul>
+<h2>Related</h2>
+<p>Other third-party repricers take 3–4 days for repricing (BAMR path is real-time). MCPS (CVTY/Wholesale) is a sunset application.</p>

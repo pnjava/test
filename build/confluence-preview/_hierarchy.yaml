@@ -1,0 +1,37 @@
+space: (unset)
+root: Meritain EAIP
+groups:
+- Current State
+- Governance
+- Knowledge Gaps
+- Target State
+pages:
+- Meritain / DG — Stitched Architecture Overview
+- CDC Options & DG→GCP Connectivity (Proposed)
+- Meritain North Star — Target Architecture
+- 'DG MVDB → Kafka → MongoDB: Transactional Outbox Reference Architecture (Proposed)'
+- Claims Domain Data Model
+- Plan Build & Design Process (Current State)
+- DG Current-State Integration Landscape (the "big diagram")
+- Transaction Cache Solution — Commercial Member/Plan/Product (Aetna side)
+- DocStore
+- Analytics & Reporting — DataVision / DataHub ODS
+- BAMR — Business Alliances Manual Repricer
+- WebDE — DG Service Layer
+- Meritain Claims Interface (MCI)
+- EBI & SmartComm
+- RightFax (COTS)
+- Stop Loss Processing
+- Enrollment Process Flow (TPA Payers)
+- DG Eligibility — Incoming & Outgoing Flows
+- Meritain DG Claims Workflow
+- Contact Center Call Flow
+- ID Card Printing (Current Architecture)
+- Internal Repricing Engine (within DG)
+- Benton Queues (Background Processing)
+- DRAFTS Process (End-of-Day Payment Run)
+- Meritain Platform Context Diagram
+- 1mage Imaging System
+- Open SME Questions
+- Extraction Notes & Watchlist
+- Knowledge Gaps

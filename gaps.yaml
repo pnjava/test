@@ -1,0 +1,121 @@
+gaps:
+- id: gap-001
+  question: Who owns CSI Web and what technology is it built with?
+  missing_info:
+  - Ownership details of CSI Web
+  date: '2026-07-12'
+  last_asked: '2026-07-12'
+  ask_count: 1
+  suggested_sme: TBD
+  status: answered
+  retrieved_ids:
+  - 11-webde#01
+  - 25-1mage-imaging#01
+  - 19-contact-center-ivr#01
+  - watchlist-acronyms
+  - 06-dg-current-state-landscape#01
+  - 12-mci-legasuite#01
+  - 11-webde#02
+  - 05-plan-build-process#02
+  answered_by: answers/gap-001.md (ingested 2026-07-12)
+- id: gap-002
+  question: whats datavision
+  missing_info:
+  - SmartPath scope
+  - Relationship between DataVision and Enterprise Data Warehouse
+  date: '2026-07-12'
+  last_asked: '2026-07-12'
+  ask_count: 1
+  suggested_sme: Rakesh/Ali
+  status: open
+  retrieved_ids:
+  - 09-datavision-analytics#01
+  - 06-dg-current-state-landscape#03
+  - watchlist-acronyms
+  - 00-stitched-architecture-overview#03
+  - 00-stitched-architecture-overview#02
+  - 02-north-star-target-architecture#01
+  - 24-context-diagram#01
+  - 25-1mage-imaging#01
+- id: gap-003
+  question: how are you?
+  missing_info:
+  - Personal status or feelings of the Meritain EAIP knowledge-base
+  date: '2026-07-12'
+  last_asked: '2026-07-12'
+  ask_count: 1
+  suggested_sme: TBD
+  status: open
+  retrieved_ids:
+  - 00-stitched-architecture-overview#02
+  - 00-stitched-architecture-overview#01
+  - 15-stoploss#02
+  - 26-lucidchart-template#01
+  - register-superapp
+  - 05-plan-build-process#02
+  - 06-dg-current-state-landscape#02
+  - 12-mci-legasuite#01
+- id: gap-004
+  question: Which CDC approach was selected?
+  missing_info:
+  - Replication DB technology (unnamed Linux DB)
+  date: '2026-07-12'
+  last_asked: '2026-07-12'
+  ask_count: 1
+  suggested_sme: Rakesh/Ali
+  status: open
+  retrieved_ids:
+  - 01-cdc-options-and-gcp-connectivity#02
+  - register-cdc-pattern
+  - 03-cdc-transactional-outbox-reference#02
+  - 01-cdc-options-and-gcp-connectivity#01
+  - 00-stitched-architecture-overview#03
+  - register-dg-direct-access
+  - 03-cdc-transactional-outbox-reference#01
+  - 19-contact-center-ivr#01
+- id: gap-005
+  question: can you tele me teh systems DG interctas with?
+  missing_info:
+  - The exact nature of interactions with systems like MCMM, MWHCSS, CSC, IMI/Individualize, WorkIT, and DMWiz is
+    unclear.
+  - The integration details with the data platform and how DG interacts with it are not explicitly stated.
+  date: '2026-07-12'
+  last_asked: '2026-07-12'
+  ask_count: 1
+  suggested_sme: Rakesh/Ali
+  status: open
+  retrieved_ids:
+  - 06-dg-current-state-landscape#01
+  - 00-stitched-architecture-overview#01
+  - 00-stitched-architecture-overview#03
+  - 03-cdc-transactional-outbox-reference#02
+  - 16-enrollment-process#01
+  - 06-dg-current-state-landscape#03
+  - register-dg-direct-access
+  - 03-cdc-transactional-outbox-reference#01
+- id: gap-006
+  question: What channels does the Meritain RCS welcome campaign use?
+  missing_info:
+  - welcome packet and ID card distribution channels (mail, brokers, clients)
+  date: '2026-07-13'
+  last_asked: '2026-07-13'
+  ask_count: 1
+  suggested_sme: TBD
+  status: open
+  retrieved_ids:
+  - 06-dg-current-state-landscape#03
+  - 09-datavision-analytics#01
+  - 05-plan-build-process#01
+  - 18-claims-workflow#02
+  - 00-stitched-architecture-overview#03
+  - gap-003-demo-forced-sme-answer#01
+  - 25-1mage-imaging#01
+  - watchlist-acronyms
+  - 02-north-star-target-architecture#02
+  - 13-ebi-smartcomm#01
+  - gap-001-csi-web-ownership#01
+  - 12-mci-legasuite#01
+metadata:
+  updated: '2026-07-13'
+  open: 5
+  answered: 1

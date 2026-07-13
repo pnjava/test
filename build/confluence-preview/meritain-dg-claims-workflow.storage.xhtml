@@ -1,0 +1,18 @@
+<ac:structured-macro ac:name="info"><ac:rich-text-body><p>state: current · confidence: verified · source: ITPR078770 PDF, pages 22 &amp; 23 (duplicate views)</p></ac:rich-text-body></ac:structured-macro>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-22.png"/></ac:image>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-23.png"/></ac:image>
+<h1>Meritain DG Claims Workflow</h1>
+<h2>Inbound claims</h2>
+<p>Clearinghouses (837 EDI), paper claims/faxes via Exela (837), Aetna Redirect (API), Medicare Crossover COBA (previously via ChangeHealth; setting up direct connect CMS NDM/IP), MSAS (Meritain Shared Admin Svcs) inbound claims (SFTP), PBM &amp; Specialty PBM claims/invoices/accumulators (SFTP), SimplePay claims from Aetna (SFTP, 2025)</p>
+<h2>Pre-adjudication</h2>
+<p>ClaimsXten (ChangeHealthcare, fka Intelliclaim) — EDI, high volume; Network Pricing (internal, online near-line, wholesale ops; batch/SFTP)</p>
+<h2>During adjudication (internal routing)</h2>
+<p>CERis; PBS, FCR, OON Negotiation Pricing; TRIBAL tribal pricing (SFTP); Prepayment Audit (high dollar, e.g. hospital bills); SimplePay member share (SFTP); HCBB vendor API (HealthCare BlueBook, "Rewardable?"); Facility Plan (deeper discount); IDX Price and Pass / Price and Pay</p>
+<h2>DG internals</h2>
+<p>DG Files: HSTRACKING (where/when claim was routed and returned), BHIST (claim details on DG screen). Claims UI app runs on Tomcat, separated by plan/user; LegaSuite COTS = workflow UI via screen scraping.</p>
+<h2>Completion of adjudication</h2>
+<p>Drafts process generates check registers → uploaded to AccPac (Accounts Receivable); check registers to groups (Employer Portal, secure email); email notification "EOB available" (member portal; EOB images via API from Zelis); DG printed letters/correspondence (USPS)</p>
+<h2>Post-adjudication outputs</h2>
+<p>Payment file to ECHO (SFTP); EOB &amp; check print file to Zelis; printed EOBs/checks (USPS); electronic payments/EPPs to providers; SimplePay payment detail; 50% large claim reports &amp; stop-loss filings (FTP); PHIA subro claims extract (SFTP) + PHIA auto-adjustment file (FTP, working on API); claims/accumulations extracts to PBMs (SFTP) + PBM Data Router (web service); postpayment audit (random); FSA vendors: Benefit Wallet, Payflex/Inspira, Health Equity incl ICMA-RC (SFTP); state surcharge (state portal upload); Wex (web service); extracts to vendors (SFTP); Standard Reporting Package (client portal); internal data warehouse (EDW/ODS, DB2/DataVision); Aetna VBC ~2025 (global thru cloud)</p>
+<h2>Extra data feeds in</h2>
+<p>Precertifications (SFTP), network provider files (SFTP), fee schedules for DG-priced networks (SFTP), FairHealth data URC and Mean (SFTP)</p>

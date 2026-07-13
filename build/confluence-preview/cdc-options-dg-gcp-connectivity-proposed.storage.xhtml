@@ -1,0 +1,21 @@
+<ac:structured-macro ac:name="warning"><ac:rich-text-body><p><strong>PROPOSED</strong> — target architecture, not implemented.</p></ac:rich-text-body></ac:structured-macro>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-01.png"/></ac:image>
+<h1>CDC Options &amp; DG→GCP Connectivity (Proposed)</h1>
+<h2>Components</h2>
+<ul><li>DG MVDB on AIX P9-PI80 (on-prem, legacy)</li><li>CDC Layer options: Rocket Data Replicate &amp; Sync (RDRS), MVX:Performance</li><li>Replication DB on Linux OS (on-prem)</li><li>Kafka Producer (Forwarder) Service — small Java/Python/Go/.NET service using Kafka Producer SDK; reads Replication DB, pushes JSON/Avro to Kafka topics in GCP</li><li>GCP: Kafka Cluster (Confluent Cloud or GCP Managed Kafka), Kafka Connect (distributed mode), MongoDB Sink Connector</li><li>MongoDB Atlas (GCP) = Meritain MongoDB Transactional Cache, with Data Denormalization step</li><li>Connectivity: PSC endpoints on both GCP VPC and MongoDB VPC; VPC peering or private endpoint between them</li></ul>
+<h2>CDC Option Ratings (verbatim from table)</h2>
+<table><tbody>
+<tr><th>Option</th><th>Fit</th><th>Notes</th></tr>
+<tr><td>Rocket Data Replicate &amp; Sync (RDRS)</td><td>***** Best</td><td>Enterprise-grade CDC, ideal for AIX→Linux replication</td></tr>
+<tr><td>MVX:Performance replication</td><td>****</td><td>Native MV replication layer; great for MV→MV or MV→relational DB</td></tr>
+<tr><td>Transactional Outbox</td><td>****</td><td>Good when apps can be modified; modern design pattern</td></tr>
+<tr><td>Trigger-based CDC (Audit Logging)</td><td>***</td><td>Best for targeted event capture or compliance</td></tr>
+<tr><td>API-level via MVIS</td><td>**</td><td>Not CDC, but good for app modernization</td></tr>
+<tr><td>Polling</td><td>x</td><td>Not appropriate for MV scale</td></tr>
+</tbody></table>
+<h2>Flow (proposed)</h2>
+<p>AIX MVDB → CDC Layer (RDRS/MVX) → Replication DB (Linux) → Lightweight Forwarder → Kafka over VPN/Interconnect/PSC → GCP Kafka → Kafka Connect + MongoDB Sink → MongoDB Atlas</p>
+<h2>Network options</h2>
+<p>VPN (encrypted tunnel, bandwidth-limited), PSC (private service endpoint, no public internet), Interconnect (dedicated physical link, 10–100 Gbps)</p>
+<h2>Unclear</h2>
+<ul><li>Which CDC option was actually selected (page 1 rates RDRS best; pages 3/7 recommend Transactional Outbox — CONTRADICTION to resolve)</li><li>Replication DB technology (unnamed Linux DB)</li></ul>

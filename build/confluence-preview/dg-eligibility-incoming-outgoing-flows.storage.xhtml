@@ -1,0 +1,11 @@
+<ac:structured-macro ac:name="info"><ac:rich-text-body><p>state: current · confidence: verified · source: ITPR078770 PDF, page 21</p></ac:rich-text-body></ac:structured-macro>
+<ac:image ac:width="900"><ri:attachment ri:filename="page-21.png"/></ac:image>
+<h1>DG Eligibility — Incoming &amp; Outgoing Flows</h1>
+<h2>Incoming</h2>
+<p>Group enrollment files (FTP; 834 custom one-time), COBRA enrollments/payments/communications (USPS/Fax/EFT), Employer Portal eligibility transactions (MeritainConnect Plan Sponsor/HR — small changes, needs approval), 270 eligibility inquiry (EDI web service), Aetna Redirect 270/276 request (API; inquiries to Aetna redirected to Meritain — tool has list of customers that moved Aetna→Meritain), Wex inbound (web service), Section 111 responses (CMS site download), 276 claim status request (EDI web service), Coverage Inquiry ASC X12 SOAP, UI manual update</p>
+<h2>Outgoing (from DG Membership Info)</h2>
+<p>Vendor extracts (FTP), letters (DG-USPS, Zelis, Smartcom), SimplePay/Coup Health (FTP), ID cards (Zelis), fully-insured medical &amp; dental certs of coverage (USPS), state-mandated reports (All Payer, assessments — varies by state), Wex outbound (web service), Payflex extracts (FTP), COBRA notifications/forms/letters/coupons (USPS), Aetna Redirect 271/277 response (API), Medicare Crossover COBA (direct connect to CMS, EFT), billing statement to employers (Employer Portal), 277 response (EDI web service), 271 response (EDI web service), Section 111 uploads to CMS (group &amp; member mandated, group TIN mandated, query not mandated)</p>
+<h2>Eligibility data content</h2>
+<p>Member ID, name, DOB, SSN; coverage type; effective/termination dates; dependents; plan codes/tiers</p>
+<h2>TPA eligibility characteristics (important)</h2>
+<ul><li>Eligibility reflects last employer file received; retro changes possible ("a yes today can become retro-term tomorrow")</li><li>Dependent rules employer-defined, not uniform</li><li>COBRA often via separate vendors; visibility delays common</li><li>Wex: COTS SaaS for flexible benefits (pre-tax set-asides); 2-way with DG (could be batch + mini service to establish common key)</li></ul>

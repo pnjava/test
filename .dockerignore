@@ -1,0 +1,16 @@
+.venv/
+chroma_db/
+build/
+__pycache__/
+**/__pycache__/
+.pytest_cache/
+knowledge/
+artifacts/
+new_work/
+*.log
+.git/
+usage_log.yaml
+gaps.yaml
+bank_candidates.yaml
+answers/
+confluence-pages.yaml
